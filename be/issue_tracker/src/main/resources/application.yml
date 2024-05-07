@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: issue_tracker
+  config:
+    import: classpath:db-config.yml

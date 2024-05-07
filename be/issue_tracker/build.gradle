@@ -30,8 +30,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
 
     // Database
-//    runtimeOnly 'com.mysql:mysql-connector-j'
-//    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 
     // Test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
