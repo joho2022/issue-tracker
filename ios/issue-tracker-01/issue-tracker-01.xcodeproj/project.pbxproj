@@ -16,6 +16,7 @@
 		D6369F5D2BEA0F90001BDAAB /* issue_tracker_01Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6369F5C2BEA0F90001BDAAB /* issue_tracker_01Tests.swift */; };
 		D6369F672BEA0F90001BDAAB /* issue_tracker_01UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6369F662BEA0F90001BDAAB /* issue_tracker_01UITests.swift */; };
 		D6369F692BEA0F90001BDAAB /* issue_tracker_01UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6369F682BEA0F90001BDAAB /* issue_tracker_01UITestsLaunchTests.swift */; };
+		D679EE472BEA355400A3FC61 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D679EE462BEA355400A3FC61 /* Color.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		D6369F622BEA0F90001BDAAB /* issue-tracker-01UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "issue-tracker-01UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6369F662BEA0F90001BDAAB /* issue_tracker_01UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = issue_tracker_01UITests.swift; sourceTree = "<group>"; };
 		D6369F682BEA0F90001BDAAB /* issue_tracker_01UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = issue_tracker_01UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D679EE462BEA355400A3FC61 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				D6369F492BEA0F8F001BDAAB /* ViewController.swift */,
 				D6369F4B2BEA0F8F001BDAAB /* Main.storyboard */,
 				D6369F4E2BEA0F90001BDAAB /* Assets.xcassets */,
+				D679EE462BEA355400A3FC61 /* Color.xcassets */,
 				D6369F502BEA0F90001BDAAB /* LaunchScreen.storyboard */,
 				D6369F532BEA0F90001BDAAB /* Info.plist */,
 			);
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6369F4F2BEA0F90001BDAAB /* Assets.xcassets in Resources */,
+				D679EE472BEA355400A3FC61 /* Color.xcassets in Resources */,
 				D6369F522BEA0F90001BDAAB /* Base in Resources */,
 				D6369F4D2BEA0F8F001BDAAB /* Base in Resources */,
 			);
