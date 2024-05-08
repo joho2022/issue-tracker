@@ -1,0 +1,9 @@
+included:
+  - issue-tracker-01
+disabled_rules:
+    - trailing_whitespace
+opt_in_rules:
+    - empty_count
+    - empty_string
+    
+line_length: 200

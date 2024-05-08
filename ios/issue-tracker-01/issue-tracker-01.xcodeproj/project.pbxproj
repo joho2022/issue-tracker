@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D61179502BEB792D00E7C267 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D611794F2BEB792D00E7C267 /* .swiftlint.yml */; };
+		D61179512BEB792D00E7C267 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D611794F2BEB792D00E7C267 /* .swiftlint.yml */; };
+		D61179522BEB792D00E7C267 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D611794F2BEB792D00E7C267 /* .swiftlint.yml */; };
 		D6369F462BEA0F8F001BDAAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6369F452BEA0F8F001BDAAB /* AppDelegate.swift */; };
 		D6369F482BEA0F8F001BDAAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6369F472BEA0F8F001BDAAB /* SceneDelegate.swift */; };
-		D6369F4A2BEA0F8F001BDAAB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6369F492BEA0F8F001BDAAB /* ViewController.swift */; };
+		D6369F4A2BEA0F8F001BDAAB /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6369F492BEA0F8F001BDAAB /* LoginController.swift */; };
 		D6369F4D2BEA0F8F001BDAAB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D6369F4C2BEA0F8F001BDAAB /* Base */; };
 		D6369F4F2BEA0F90001BDAAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6369F4E2BEA0F90001BDAAB /* Assets.xcassets */; };
 		D6369F522BEA0F90001BDAAB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D6369F512BEA0F90001BDAAB /* Base */; };
@@ -37,10 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D611794F2BEB792D00E7C267 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		D6369F422BEA0F8F001BDAAB /* issue-tracker-01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "issue-tracker-01.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6369F452BEA0F8F001BDAAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6369F472BEA0F8F001BDAAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D6369F492BEA0F8F001BDAAB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D6369F492BEA0F8F001BDAAB /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		D6369F4C2BEA0F8F001BDAAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D6369F4E2BEA0F90001BDAAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6369F512BEA0F90001BDAAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -81,6 +85,7 @@
 		D6369F392BEA0F8F001BDAAB = {
 			isa = PBXGroup;
 			children = (
+				D611794F2BEB792D00E7C267 /* .swiftlint.yml */,
 				D6369F442BEA0F8F001BDAAB /* issue-tracker-01 */,
 				D6369F5B2BEA0F90001BDAAB /* issue-tracker-01Tests */,
 				D6369F652BEA0F90001BDAAB /* issue-tracker-01UITests */,
@@ -103,7 +108,7 @@
 			children = (
 				D6369F452BEA0F8F001BDAAB /* AppDelegate.swift */,
 				D6369F472BEA0F8F001BDAAB /* SceneDelegate.swift */,
-				D6369F492BEA0F8F001BDAAB /* ViewController.swift */,
+				D659C5B22BEB559C007A57C1 /* Login */,
 				D6369F4B2BEA0F8F001BDAAB /* Main.storyboard */,
 				D6369F4E2BEA0F90001BDAAB /* Assets.xcassets */,
 				D679EE462BEA355400A3FC61 /* Color.xcassets */,
@@ -130,6 +135,14 @@
 			path = "issue-tracker-01UITests";
 			sourceTree = "<group>";
 		};
+		D659C5B22BEB559C007A57C1 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D6369F492BEA0F8F001BDAAB /* LoginController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,6 +153,7 @@
 				D6369F3E2BEA0F8F001BDAAB /* Sources */,
 				D6369F3F2BEA0F8F001BDAAB /* Frameworks */,
 				D6369F402BEA0F8F001BDAAB /* Resources */,
+				D611794E2BEB78EF00E7C267 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -234,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D61179502BEB792D00E7C267 /* .swiftlint.yml in Resources */,
 				D6369F4F2BEA0F90001BDAAB /* Assets.xcassets in Resources */,
 				D679EE472BEA355400A3FC61 /* Color.xcassets in Resources */,
 				D6369F522BEA0F90001BDAAB /* Base in Resources */,
@@ -245,6 +260,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D61179512BEB792D00E7C267 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,17 +268,40 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D61179522BEB792D00E7C267 /* .swiftlint.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D611794E2BEB78EF00E7C267 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D6369F3E2BEA0F8F001BDAAB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6369F4A2BEA0F8F001BDAAB /* ViewController.swift in Sources */,
+				D6369F4A2BEA0F8F001BDAAB /* LoginController.swift in Sources */,
 				D6369F462BEA0F8F001BDAAB /* AppDelegate.swift in Sources */,
 				D6369F482BEA0F8F001BDAAB /* SceneDelegate.swift in Sources */,
 			);
@@ -447,6 +486,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9H57LB393L;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "issue-tracker-01/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -475,6 +515,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9H57LB393L;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "issue-tracker-01/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
