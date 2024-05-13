@@ -1,16 +1,15 @@
 //
-//  IssueCell.swift
+//  IssueTableCell.swift
 //  issue-tracker-01
 //
-//  Created by 조호근 on 5/9/24.
+//  Created by 조호근 on 5/13/24.
 //
 
 import UIKit
 
-class IssueCell: UICollectionViewCell {
+class IssueTableCell: UITableViewCell {
 
-    static let identifier: String = "IssueCell"
-    static let height: CGFloat = 148
+    static let identifier: String = "IssueTableCell"
     
     private var lables: [Issue.Label]?
     
@@ -21,7 +20,7 @@ class IssueCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        configureLayout()
+        
         configureFont()
         setupCollectionView()
     }
@@ -32,16 +31,6 @@ class IssueCell: UICollectionViewCell {
         titleLabel.text = nil
         descriptionLabel.text = nil
         milestoneLabel.text = nil
-    }
-    
-    private func configureLayout() {
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-        
-        contentView.heightAnchor.constraint(equalToConstant: 148).isActive = true
     }
     
     private func setupCollectionView() {
@@ -73,15 +62,25 @@ class IssueCell: UICollectionViewCell {
         self.titleLabel.text = data.title
         self.descriptionLabel.text = data.comment
         self.milestoneLabel.text = data.milestone?.name
+        
+        if let labels = data.labels {
+            setData(labels)
+        }
     }
     
-    func setData(_ data: [Issue.Label]?) {
+    private func setData(_ data: [Issue.Label]?) {
         self.lables = data
         self.collectionView.reloadData()
     }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+    }
+    
 }
 
-extension IssueCell: UICollectionViewDataSource, UICollectionViewDelegate {
+extension IssueTableCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return lables?.count ?? 0
     }
@@ -99,7 +98,7 @@ extension IssueCell: UICollectionViewDataSource, UICollectionViewDelegate {
     }
 }
 
-extension IssueCell: UICollectionViewDelegateFlowLayout {
+extension IssueTableCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         let tmpLabel: UILabel = UILabel()

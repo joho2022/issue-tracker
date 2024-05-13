@@ -209,29 +209,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NfV-a4-vGI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ExQ-3W-EYF">
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ssF-je-PWD">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
+                                <sections/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2zf-aS-7qt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="NfV-a4-vGI" firstAttribute="top" secondItem="2zf-aS-7qt" secondAttribute="top" id="6CO-4D-EuJ"/>
-                            <constraint firstItem="2zf-aS-7qt" firstAttribute="trailing" secondItem="NfV-a4-vGI" secondAttribute="trailing" id="Opo-rU-GP9"/>
-                            <constraint firstItem="2zf-aS-7qt" firstAttribute="bottom" secondItem="NfV-a4-vGI" secondAttribute="bottom" id="R7K-rO-0kB"/>
-                            <constraint firstItem="NfV-a4-vGI" firstAttribute="leading" secondItem="2zf-aS-7qt" secondAttribute="leading" id="zEO-AR-4rf"/>
+                            <constraint firstItem="ExQ-3W-EYF" firstAttribute="leading" secondItem="2zf-aS-7qt" secondAttribute="leading" id="5bd-eJ-l20"/>
+                            <constraint firstItem="ExQ-3W-EYF" firstAttribute="top" secondItem="2zf-aS-7qt" secondAttribute="top" id="61D-w8-GoH"/>
+                            <constraint firstItem="2zf-aS-7qt" firstAttribute="trailing" secondItem="ExQ-3W-EYF" secondAttribute="trailing" id="Ufu-3J-MAs"/>
+                            <constraint firstItem="2zf-aS-7qt" firstAttribute="bottom" secondItem="ExQ-3W-EYF" secondAttribute="bottom" id="YrC-XG-KtQ"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="NfV-a4-vGI" id="j3c-iK-2vQ"/>
+                        <outlet property="tableView" destination="ExQ-3W-EYF" id="2Bo-J7-QZR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J1c-XO-XpT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

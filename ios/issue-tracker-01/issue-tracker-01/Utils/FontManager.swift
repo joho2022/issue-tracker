@@ -10,11 +10,13 @@ import UIKit
 struct FontManager {
     enum Weight {
         case bold
+        case semibold
         case regular
         
         var weight: UIFont.Weight {
             switch self {
             case .bold: .bold
+            case .semibold: .semibold
             case .regular: .regular
             }
         }
