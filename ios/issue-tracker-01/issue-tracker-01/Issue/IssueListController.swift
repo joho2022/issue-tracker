@@ -8,7 +8,7 @@
 import UIKit
 
 class IssueListController: UIViewController {
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
     
     var issueViewModel = IssueViewModel()
 
@@ -16,48 +16,59 @@ class IssueListController: UIViewController {
         super.viewDidLoad()
         
         self.title = "이슈"
-        setupCollectionView()
+        setupTableView()
         
         issueViewModel.fetchIssues {
             DispatchQueue.main.async {
-                self.collectionView.reloadData()
+                self.tableView.reloadData()
             }
         }
     }
     
-    private func setupCollectionView() {
-        self.collectionView.register(
-            UINib(nibName: "IssueCell", bundle: .main),
-            forCellWithReuseIdentifier: IssueCell.identifier
-        )
-        
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
+    private func setupTableView() {
+        tableView.register(UINib(nibName: "IssueTableCell", bundle: .main), forCellReuseIdentifier: IssueTableCell.identifier)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = 148
     }
 }
 
-extension IssueListController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension IssueListController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return issueViewModel.issues?.count ?? 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IssueCell.identifier, for: indexPath) as? IssueCell else { return UICollectionViewCell() }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: IssueTableCell.identifier, for: indexPath) as? IssueTableCell else {
+            return UITableViewCell()
+        }
         
         if let issue = issueViewModel.issues?[indexPath.row] {
-            let labels = issue.labels ?? nil
-            cell.setData(labels)
             cell.setIssue(issue)
         }
         
         return cell
     }
-}
 
-extension IssueListController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.bounds.width
-        let height: CGFloat = 148
-        return CGSize(width: width, height: height)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = createSwipeAction(title: "삭제",
+                                             color: .myRed,
+                                             image: UIImage(systemName: "trash.fill"),
+                                             style: .destructive) { _, _, completionHandler in
+            print("삭제")
+            completionHandler(true)
+        }
+
+        let closeAction = createSwipeAction(title: "닫기",
+                                             color: .myPurple,
+                                             image: UIImage(systemName: "archivebox.fill"),
+                                             style: .destructive) { _, _, completionHandler in
+            print("닫기")
+            completionHandler(true)
+        }
+        
+        let config = UISwipeActionsConfiguration(actions: [deleteAction, closeAction])
+        config.performsFirstActionWithFullSwipe = false
+        return config
     }
 }
