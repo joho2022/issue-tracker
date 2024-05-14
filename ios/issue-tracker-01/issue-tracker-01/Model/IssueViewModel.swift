@@ -8,29 +8,24 @@
 import Foundation
 
 class IssueViewModel {
-    var issues: [Issue]?
+    private(set) var issues: [Issue] = []
 
-    func fetchIssues(completion: @escaping () -> Void) {
-        guard let url = URL(string: "http://13.125.246.130:8080/issue/list") else { return }
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, error == nil else {
-                print("Error fetching data: \(error?.localizedDescription ?? "Unknown error")")
-                return
-            }
-
-            do {
-                self.issues = try JSONDecoder().decode([Issue].self, from: data)
-                
-                let encoder = JSONEncoder()
-                encoder.outputFormatting = .prettyPrinted
-                let jsonData = try encoder.encode(self.issues)
-                if let jsonString = String(data: jsonData, encoding: .utf8) {
-                    print(jsonString)
-                }
-                completion()
-            } catch {
-                print("Error decoding JSON: \(error)")
-            }
-        }.resume()
+    var count: Int {
+        return issues.count
+    }
+    
+    func updateIssues(with newIssues: [Issue]) {
+        self.issues = newIssues
+    }
+    
+    func issue(at index: Int) -> Issue? {
+        guard index >= 0 && index < issues.count else { return nil }
+        return issues[index]
+    }
+    
+    func removeIssue(at index: Int) {
+        if index >= 0 && index < issues.count {
+            issues.remove(at: index)
+        }
     }
 }
