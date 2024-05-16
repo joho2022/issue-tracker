@@ -10,7 +10,7 @@ import UIKit
 class IssueListController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    let issueViewModel = IssueViewModel()
+    let issueViewModel = BaseViewModel<Issue>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class IssueListController: UIViewController {
     private func fetchIssues() {
         NetworkManager.shared.fetchIssues { [weak self] issues in
             DispatchQueue.main.async {
-                self?.issueViewModel.updateIssues(with: issues ?? [])
+                self?.issueViewModel.updateItems(with: issues ?? [])
                 self?.tableView.reloadData()
             }
         }
@@ -48,7 +48,7 @@ extension IssueListController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
-        if let issue = issueViewModel.issue(at: indexPath.row) {
+        if let issue = issueViewModel.item(at: indexPath.row) {
             cell.setIssue(issue)
         }
         
@@ -60,14 +60,14 @@ extension IssueListController: UITableViewDataSource, UITableViewDelegate {
                                              color: .myRed,
                                              image: UIImage(systemName: "trash.fill"),
                                              style: .destructive) { _, _, completionHandler in
-            guard let issue = self.issueViewModel.issue(at: indexPath.row) else {
+            guard let issue = self.issueViewModel.item(at: indexPath.row) else {
                 completionHandler(false)
                 return
             }
             
             NetworkManager.shared.deleteIssue(issueId: issue.id) { success in
                 if success {
-                    self.issueViewModel.removeIssue(at: indexPath.row)
+                    self.issueViewModel.removeItem(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .automatic)
                 }
                 print("\(issue.id) 삭제")
@@ -79,14 +79,14 @@ extension IssueListController: UITableViewDataSource, UITableViewDelegate {
                                             color: .myPurple,
                                             image: UIImage(systemName: "archivebox.fill"),
                                             style: .destructive) { _, _, completionHandler in
-            guard let issue = self.issueViewModel.issue(at: indexPath.row) else {
+            guard let issue = self.issueViewModel.item(at: indexPath.row) else {
                 completionHandler(false)
                 return
             }
             
             NetworkManager.shared.closeIssue(issueId: issue.id) { success in
                 if success {
-                    self.issueViewModel.removeIssue(at: indexPath.row)
+                    self.issueViewModel.removeItem(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .automatic)
                 }
                 print("\(issue.id) 닫기")
@@ -97,5 +97,18 @@ extension IssueListController: UITableViewDataSource, UITableViewDelegate {
         let config = UISwipeActionsConfiguration(actions: [deleteAction, closeAction])
         config.performsFirstActionWithFullSwipe = false
         return config
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let issue = issueViewModel.item(at: indexPath.row) {
+            showIssueDetail(issueId: issue.id)
+        }
+    }
+    
+    private func showIssueDetail(issueId: Int) {
+        let issueDetailVC = IssueDetailViewController(nibName: IssueDetailViewController.identifier, bundle: nil)
+        issueDetailVC.issueId = issueId
+        issueDetailVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(issueDetailVC, animated: true)
     }
 }

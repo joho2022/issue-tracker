@@ -12,12 +12,14 @@ struct FontManager {
         case bold
         case semibold
         case regular
+        case medium
         
         var weight: UIFont.Weight {
             switch self {
             case .bold: .bold
             case .semibold: .semibold
             case .regular: .regular
+            case .medium: .medium
             }
         }
     }
