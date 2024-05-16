@@ -45,6 +45,8 @@
 		D6A632112BF35D24000E9C30 /* IssueDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A6320E2BF35D24000E9C30 /* IssueDetailCell.swift */; };
 		D6A632172BF46ACC000E9C30 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A632162BF46ACC000E9C30 /* BaseViewModel.swift */; };
 		D6A632192BF59AC0000E9C30 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A632182BF59AC0000E9C30 /* Date+Extensions.swift */; };
+		D6A632232BF5DD2F000E9C30 /* IssueDetailHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6A632222BF5DD2F000E9C30 /* IssueDetailHeaderView.xib */; };
+		D6A632272BF5E045000E9C30 /* IssueDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A632262BF5E045000E9C30 /* IssueDetailHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,8 @@
 		D6A6320F2BF35D24000E9C30 /* IssueDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueDetailCell.xib; sourceTree = "<group>"; };
 		D6A632162BF46ACC000E9C30 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		D6A632182BF59AC0000E9C30 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		D6A632222BF5DD2F000E9C30 /* IssueDetailHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueDetailHeaderView.xib; sourceTree = "<group>"; };
+		D6A632262BF5E045000E9C30 /* IssueDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +296,8 @@
 			children = (
 				D6A632092BF34589000E9C30 /* IssueDetailViewController.swift */,
 				D6A6320A2BF34589000E9C30 /* IssueDetailViewController.xib */,
+				D6A632262BF5E045000E9C30 /* IssueDetailHeaderView.swift */,
+				D6A632222BF5DD2F000E9C30 /* IssueDetailHeaderView.xib */,
 				D6A6320E2BF35D24000E9C30 /* IssueDetailCell.swift */,
 				D6A6320F2BF35D24000E9C30 /* IssueDetailCell.xib */,
 			);
@@ -408,6 +414,7 @@
 				D6369F4F2BEA0F90001BDAAB /* Assets.xcassets in Resources */,
 				D679EE472BEA355400A3FC61 /* Color.xcassets in Resources */,
 				D6369F522BEA0F90001BDAAB /* Base in Resources */,
+				D6A632232BF5DD2F000E9C30 /* IssueDetailHeaderView.xib in Resources */,
 				D6A631F52BF1D101000E9C30 /* IssueTableCell.xib in Resources */,
 				D61179792BECA9D400E7C267 /* labelCell.xib in Resources */,
 				D6A632102BF35D24000E9C30 /* IssueDetailCell.xib in Resources */,
@@ -479,6 +486,7 @@
 				D61179582BEC62D200E7C267 /* LabelListController.swift in Sources */,
 				D6A632192BF59AC0000E9C30 /* Date+Extensions.swift in Sources */,
 				D61179782BECA9D400E7C267 /* LabelCell.swift in Sources */,
+				D6A632272BF5E045000E9C30 /* IssueDetailHeaderView.swift in Sources */,
 				D61179692BEC6F3200E7C267 /* FontManager.swift in Sources */,
 				D6A631EF2BEFDB72000E9C30 /* UIColor+Extensions.swift in Sources */,
 				D6369F482BEA0F8F001BDAAB /* SceneDelegate.swift in Sources */,

@@ -20,6 +20,9 @@ class IssueDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationItem.largeTitleDisplayMode = .never
+        self.navigationItem.title = ""
+        
         configureNavigationBar()
         setupTableView()
         
@@ -29,10 +32,10 @@ class IssueDetailViewController: UIViewController {
     }
     
     private func setupTableView() {
+        tableView.register(UINib(nibName: "IssueDetailHeaderView", bundle: .main), forHeaderFooterViewReuseIdentifier: IssueDetailHeaderView.identifier)
         tableView.register(UINib(nibName: "IssueDetailCell", bundle: .main), forCellReuseIdentifier: IssueDetailCell.identifier)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = 120
     }
     
     private func fetchIssueDetail(issueId: Int) {
@@ -82,9 +85,22 @@ extension IssueDetailViewController: UITableViewDataSource, UITableViewDelegate 
         }
         
         if let comment = commentViewModel.item(at: indexPath.row) {
-            cell.setDetail(with: comment, issueAuthor: issueDetail.author)
+            cell.setComment(with: comment, issueAuthor: issueDetail.author)
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: IssueDetailHeaderView.identifier) as? IssueDetailHeaderView,
+              let issueDetail = issueDetail else {
+            return nil
+        }
+        headerView.setDetail(with: issueDetail)
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 96
     }
 }

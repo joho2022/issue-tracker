@@ -19,7 +19,7 @@ class IssueDetailCell: UITableViewCell {
     @IBOutlet weak var actionButton: UIButton!
     
     private let defaultImage = UIImage(named: "profileL")
-    private let heartImage = UIImage(systemName: "heart")
+    private let heartImage = UIImage(systemName: "heart.fill")
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -55,12 +55,12 @@ class IssueDetailCell: UITableViewCell {
         self.authorLabel.layer.borderColor = UIColor.gray200.cgColor
     }
     
-    func setDetail(with comment: Comment, issueAuthor: String) {
+    func setComment(with comment: Comment, issueAuthor: String) {
         self.nameLabel.text = comment.authorName
         self.contentLabel.text = comment.content
         self.userImage.image = defaultImage
         
-        if let date = dateFromString(comment.lastModifiedAt) {
+        if let date = Date.dateFromString(comment.lastModifiedAt) {
             self.timeLabel.text = date.timeAgoDisplay()
         } else {
             self.timeLabel.text = "날짜 오류"
@@ -78,17 +78,22 @@ class IssueDetailCell: UITableViewCell {
     
     @objc private func moreBtnTapped() {
         print("more버튼 Tapped!")
+        animateButton()
     }
     
     @objc private func heartBtnTapped() {
         print("하트버튼 Tapped!")
+        animateButton()
     }
     
-    private func dateFromString(_ dateString: String) -> Date? {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.locale = Locale(identifier: "ko_KR")
-        return formatter.date(from: dateString)
+    private func animateButton() {
+        UIView.animate(withDuration: 0.1,
+                       animations: {
+            self.actionButton.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.1) {
+                self.actionButton.transform = CGAffineTransform.identity
+            }
+        })
     }
 }

@@ -61,7 +61,7 @@ class IssueTableCell: UITableViewCell {
     func setIssue(_ data: Issue) {
         self.titleLabel.text = data.title
         self.descriptionLabel.text = data.comment
-        self.milestoneLabel.text = data.milestone?.name
+        self.milestoneLabel.text = data.milestone?.title
         
         if let labels = data.labels {
             setData(labels)

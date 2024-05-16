@@ -8,6 +8,14 @@
 import Foundation
 
 extension Date {
+    static func dateFromString(_ dateString: String) -> Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.locale = Locale(identifier: "ko_KR")
+        return formatter.date(from: dateString)
+    }
+    
     func timeAgoDisplay() -> String {
         let calendar = Calendar.current
         let now = Date()
