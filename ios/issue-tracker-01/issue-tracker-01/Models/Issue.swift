@@ -41,14 +41,10 @@ struct Label: Codable {
     let id: Int
     let name: String
     let description: String
-    let createdAt: String
     let color: String
 }
 
 struct Milestone: Codable {
     let id: Int
-    let name: String
-    let description: String
-    let createdAt: String
-    let deadline: String
+    let title: String
 }
