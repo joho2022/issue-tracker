@@ -19,6 +19,7 @@ class IssueListController: UIViewController {
         setupTableView()
         
         fetchIssues()
+        setupFAB()
     }
     
     private func setupTableView() {
@@ -35,6 +36,31 @@ class IssueListController: UIViewController {
                 self?.tableView.reloadData()
             }
         }
+    }
+    
+    private func setupFAB() {
+        let fabButton = UIButton(type: .custom)
+        fabButton.backgroundColor = .myBlue
+        fabButton.setImage(UIImage(systemName: "plus"), for: .normal)
+        fabButton.tintColor = .gray50
+        fabButton.layer.cornerRadius = 28
+        fabButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(fabButton)
+        
+        NSLayoutConstraint.activate([
+            fabButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            fabButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -23),
+            fabButton.widthAnchor.constraint(equalToConstant: 56),
+            fabButton.heightAnchor.constraint(equalToConstant: 56)
+        ])
+        
+        fabButton.addTarget(self, action: #selector(fabTapped), for: .touchUpInside)
+    }
+    
+    @objc private func fabTapped() {
+        let issueEditorVC = IssueEditorViewController(nibName: IssueEditorViewController.identifier, bundle: nil)
+        navigationController?.pushViewController(issueEditorVC, animated: true)
     }
 }
 

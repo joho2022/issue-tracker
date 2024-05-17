@@ -21,7 +21,6 @@ class IssueDetailViewController: UIViewController {
         super.viewDidLoad()
 
         self.navigationItem.largeTitleDisplayMode = .never
-        self.navigationItem.title = ""
         
         configureNavigationBar()
         setupTableView()
@@ -62,6 +61,11 @@ class IssueDetailViewController: UIViewController {
                                          action: #selector(moreBtnTapped)
         )
         navigationItem.rightBarButtonItem = moreButton
+        
+        if #available(iOS 13.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        }
+        
     }
     
     @objc private func backBtnTapped() {
@@ -96,6 +100,7 @@ extension IssueDetailViewController: UITableViewDataSource, UITableViewDelegate 
               let issueDetail = issueDetail else {
             return nil
         }
+        headerView.contentView.backgroundColor = .systemBackground
         headerView.setDetail(with: issueDetail)
         return headerView
     }

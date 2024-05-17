@@ -30,6 +30,8 @@
 		D6369F5D2BEA0F90001BDAAB /* issue_tracker_01Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6369F5C2BEA0F90001BDAAB /* issue_tracker_01Tests.swift */; };
 		D6369F672BEA0F90001BDAAB /* issue_tracker_01UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6369F662BEA0F90001BDAAB /* issue_tracker_01UITests.swift */; };
 		D6369F692BEA0F90001BDAAB /* issue_tracker_01UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6369F682BEA0F90001BDAAB /* issue_tracker_01UITestsLaunchTests.swift */; };
+		D642E2662BF6182B00ACAE45 /* IssueEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D642E2652BF6182B00ACAE45 /* IssueEditorViewController.xib */; };
+		D642E2672BF6182B00ACAE45 /* IssueEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D642E2642BF6182B00ACAE45 /* IssueEditorViewController.swift */; };
 		D679EE472BEA355400A3FC61 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D679EE462BEA355400A3FC61 /* Color.xcassets */; };
 		D6A631EF2BEFDB72000E9C30 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A631EE2BEFDB72000E9C30 /* UIColor+Extensions.swift */; };
 		D6A631F42BF1D101000E9C30 /* IssueTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A631F22BF1D101000E9C30 /* IssueTableCell.swift */; };
@@ -92,6 +94,8 @@
 		D6369F622BEA0F90001BDAAB /* issue-tracker-01UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "issue-tracker-01UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6369F662BEA0F90001BDAAB /* issue_tracker_01UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = issue_tracker_01UITests.swift; sourceTree = "<group>"; };
 		D6369F682BEA0F90001BDAAB /* issue_tracker_01UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = issue_tracker_01UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D642E2642BF6182B00ACAE45 /* IssueEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueEditorViewController.swift; sourceTree = "<group>"; };
+		D642E2652BF6182B00ACAE45 /* IssueEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueEditorViewController.xib; sourceTree = "<group>"; };
 		D679EE462BEA355400A3FC61 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		D6A631EE2BEFDB72000E9C30 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+Extensions.swift"; path = "../../../../../../Part 3/UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		D6A631F22BF1D101000E9C30 /* IssueTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueTableCell.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 				D61179762BECA9D400E7C267 /* LabelCell.swift */,
 				D61179772BECA9D400E7C267 /* labelCell.xib */,
 				D6A6320D2BF345B4000E9C30 /* IssueDetail */,
+				D6A6322C2BF61596000E9C30 /* IssueEditor */,
 			);
 			path = Issue;
 			sourceTree = "<group>";
@@ -304,6 +309,15 @@
 			path = IssueDetail;
 			sourceTree = "<group>";
 		};
+		D6A6322C2BF61596000E9C30 /* IssueEditor */ = {
+			isa = PBXGroup;
+			children = (
+				D642E2642BF6182B00ACAE45 /* IssueEditorViewController.swift */,
+				D642E2652BF6182B00ACAE45 /* IssueEditorViewController.xib */,
+			);
+			path = IssueEditor;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -410,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D61179502BEB792D00E7C267 /* .swiftlint.yml in Resources */,
+				D642E2662BF6182B00ACAE45 /* IssueEditorViewController.xib in Resources */,
 				D6A6320B2BF34589000E9C30 /* IssueDetailViewController.xib in Resources */,
 				D6369F4F2BEA0F90001BDAAB /* Assets.xcassets in Resources */,
 				D679EE472BEA355400A3FC61 /* Color.xcassets in Resources */,
@@ -478,6 +493,7 @@
 				D6A632002BF2200A000E9C30 /* HTTPManager.swift in Sources */,
 				D6369F462BEA0F8F001BDAAB /* AppDelegate.swift in Sources */,
 				D61179662BEC6D6800E7C267 /* Color.swift in Sources */,
+				D642E2672BF6182B00ACAE45 /* IssueEditorViewController.swift in Sources */,
 				D6A631F42BF1D101000E9C30 /* IssueTableCell.swift in Sources */,
 				D61179562BEC60D900E7C267 /* TabBarController.swift in Sources */,
 				D6A632172BF46ACC000E9C30 /* BaseViewModel.swift in Sources */,
