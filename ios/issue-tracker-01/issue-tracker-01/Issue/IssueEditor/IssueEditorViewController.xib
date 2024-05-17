@@ -11,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IssueEditorViewController" customModule="issue_tracker_01" customModuleProvider="target">
             <connections>
+                <outlet property="optionInfoLabel" destination="nIi-k9-9Vs" id="rCe-BM-hXB"/>
+                <outlet property="tableView" destination="Orz-Tm-q2P" id="vfz-Rq-yA7"/>
+                <outlet property="titleLabel" destination="chA-ZK-nK6" id="2uZ-qt-faG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,12 +26,12 @@
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="79y-Iy-AbW">
-                            <rect key="frame" x="0.0" y="4" width="393" height="571"/>
+                            <rect key="frame" x="0.0" y="4" width="393" height="560"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sCI-tq-JhW">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chA-ZK-nK6">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chA-ZK-nK6">
                                             <rect key="frame" x="16" y="6" width="78" height="32"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="78" id="1EW-at-3Ht"/>
@@ -56,10 +59,10 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y66-le-vsY">
-                                    <rect key="frame" x="0.0" y="45" width="393" height="526"/>
+                                    <rect key="frame" x="0.0" y="45" width="393" height="515"/>
                                     <subviews>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="clM-0x-rPg">
-                                            <rect key="frame" x="16" y="6" width="361" height="514"/>
+                                            <rect key="frame" x="16" y="6" width="361" height="503"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                             <color key="textColor" systemColor="labelColor"/>
@@ -78,12 +81,12 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="fW3-6D-5oF">
-                            <rect key="frame" x="0.0" y="579" width="393" height="179"/>
+                            <rect key="frame" x="0.0" y="568" width="393" height="190"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEc-OF-SAf">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIi-k9-9Vs">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추가 정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIi-k9-9Vs">
                                             <rect key="frame" x="16" y="10" width="361" height="24"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -99,12 +102,12 @@
                                         <constraint firstAttribute="trailing" secondItem="nIi-k9-9Vs" secondAttribute="trailing" constant="16" id="q1h-g3-Xhc"/>
                                     </constraints>
                                 </view>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Orz-Tm-q2P">
-                                    <rect key="frame" x="0.0" y="45" width="393" height="134"/>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Orz-Tm-q2P">
+                                    <rect key="frame" x="0.0" y="45" width="393" height="145"/>
                                 </tableView>
                             </subviews>
                             <constraints>
-                                <constraint firstAttribute="height" constant="179" id="XdK-ov-z6I"/>
+                                <constraint firstAttribute="height" constant="190" id="XdK-ov-z6I"/>
                             </constraints>
                         </stackView>
                     </subviews>

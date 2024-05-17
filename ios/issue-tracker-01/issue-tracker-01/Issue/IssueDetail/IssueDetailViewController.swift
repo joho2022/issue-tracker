@@ -61,11 +61,6 @@ class IssueDetailViewController: UIViewController {
                                          action: #selector(moreBtnTapped)
         )
         navigationItem.rightBarButtonItem = moreButton
-        
-        if #available(iOS 13.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-        }
-        
     }
     
     @objc private func backBtnTapped() {
