@@ -240,25 +240,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="레이블" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmK-OQ-g0v">
-                                <rect key="frame" x="118.66666666666669" y="402.66666666666669" width="156" height="72"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WNq-lT-8vT">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0yf-WK-TKx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="CmK-OQ-g0v" firstAttribute="centerY" secondItem="0yf-WK-TKx" secondAttribute="centerY" id="aDm-U3-MtO"/>
-                            <constraint firstItem="CmK-OQ-g0v" firstAttribute="centerX" secondItem="0yf-WK-TKx" secondAttribute="centerX" id="brU-Mb-sQh"/>
+                            <constraint firstItem="WNq-lT-8vT" firstAttribute="leading" secondItem="0yf-WK-TKx" secondAttribute="leading" id="Bxv-vt-IIu"/>
+                            <constraint firstItem="0yf-WK-TKx" firstAttribute="trailing" secondItem="WNq-lT-8vT" secondAttribute="trailing" id="J5e-An-50D"/>
+                            <constraint firstItem="0yf-WK-TKx" firstAttribute="bottom" secondItem="WNq-lT-8vT" secondAttribute="bottom" id="Wd3-dR-pxE"/>
+                            <constraint firstItem="WNq-lT-8vT" firstAttribute="top" secondItem="0yf-WK-TKx" secondAttribute="top" id="ah5-99-WZK"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="레이블" image="property=tag" id="y3L-jz-ib1"/>
+                    <connections>
+                        <outlet property="tableView" destination="WNq-lT-8vT" id="rtU-ng-k6U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qkq-Vk-Yaa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2502" y="-330"/>
+            <point key="canvasLocation" x="2502" y="-316"/>
         </scene>
         <!--마일스톤-->
         <scene sceneID="pXF-YS-gNh">

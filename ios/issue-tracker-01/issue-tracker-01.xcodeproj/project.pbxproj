@@ -36,6 +36,8 @@
 		D642E26B2BF6EFD000ACAE45 /* EditorOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D642E2692BF6EFD000ACAE45 /* EditorOptionCell.xib */; };
 		D642E26E2BF717BB00ACAE45 /* EditorOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D642E26C2BF717BB00ACAE45 /* EditorOptionViewController.swift */; };
 		D642E26F2BF717BB00ACAE45 /* EditorOptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D642E26D2BF717BB00ACAE45 /* EditorOptionViewController.xib */; };
+		D642E2722BF740A400ACAE45 /* LabelTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D642E2702BF740A400ACAE45 /* LabelTableCell.swift */; };
+		D642E2732BF740A400ACAE45 /* LabelTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D642E2712BF740A400ACAE45 /* LabelTableCell.xib */; };
 		D679EE472BEA355400A3FC61 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D679EE462BEA355400A3FC61 /* Color.xcassets */; };
 		D6A631EF2BEFDB72000E9C30 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A631EE2BEFDB72000E9C30 /* UIColor+Extensions.swift */; };
 		D6A631F42BF1D101000E9C30 /* IssueTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A631F22BF1D101000E9C30 /* IssueTableCell.swift */; };
@@ -104,6 +106,8 @@
 		D642E2692BF6EFD000ACAE45 /* EditorOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditorOptionCell.xib; sourceTree = "<group>"; };
 		D642E26C2BF717BB00ACAE45 /* EditorOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorOptionViewController.swift; sourceTree = "<group>"; };
 		D642E26D2BF717BB00ACAE45 /* EditorOptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditorOptionViewController.xib; sourceTree = "<group>"; };
+		D642E2702BF740A400ACAE45 /* LabelTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableCell.swift; sourceTree = "<group>"; };
+		D642E2712BF740A400ACAE45 /* LabelTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelTableCell.xib; sourceTree = "<group>"; };
 		D679EE462BEA355400A3FC61 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		D6A631EE2BEFDB72000E9C30 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor+Extensions.swift"; path = "../../../../../../Part 3/UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		D6A631F22BF1D101000E9C30 /* IssueTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueTableCell.swift; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				D61179572BEC62D200E7C267 /* LabelListController.swift */,
+				D642E2702BF740A400ACAE45 /* LabelTableCell.swift */,
+				D642E2712BF740A400ACAE45 /* LabelTableCell.xib */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -436,6 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D61179502BEB792D00E7C267 /* .swiftlint.yml in Resources */,
+				D642E2732BF740A400ACAE45 /* LabelTableCell.xib in Resources */,
 				D642E2662BF6182B00ACAE45 /* IssueEditorViewController.xib in Resources */,
 				D642E26F2BF717BB00ACAE45 /* EditorOptionViewController.xib in Resources */,
 				D6A6320B2BF34589000E9C30 /* IssueDetailViewController.xib in Resources */,
@@ -506,6 +513,7 @@
 				D61179742BEC8FA900E7C267 /* Issue.swift in Sources */,
 				D6A631F72BF1DF8A000E9C30 /* UIViewController+Extensions.swift in Sources */,
 				D6A632002BF2200A000E9C30 /* HTTPManager.swift in Sources */,
+				D642E2722BF740A400ACAE45 /* LabelTableCell.swift in Sources */,
 				D6369F462BEA0F8F001BDAAB /* AppDelegate.swift in Sources */,
 				D61179662BEC6D6800E7C267 /* Color.swift in Sources */,
 				D642E26E2BF717BB00ACAE45 /* EditorOptionViewController.swift in Sources */,
