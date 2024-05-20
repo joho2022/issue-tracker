@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol IssueManaging: AnyObject {
+protocol ItemManaging: AnyObject {
     associatedtype T
     
     func updateItems(with newItems: [T])
@@ -15,7 +15,7 @@ protocol IssueManaging: AnyObject {
     func removeItem(at index: Int)
 }
 
-class BaseViewModel<T>: IssueManaging {
+class BaseViewModel<T>: ItemManaging {
     private(set) var items: [T] = []
     
     var count: Int {

@@ -10,7 +10,7 @@ import UIKit
 class IssueListController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    let issueViewModel = BaseViewModel<Issue>()
+    let issueViewModel = IssueViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,13 +91,12 @@ extension IssueListController: UITableViewDataSource, UITableViewDelegate {
                 return
             }
             
-            NetworkManager.shared.deleteIssue(issueId: issue.id) { success in
+            self.issueViewModel.deleteIssue(at: indexPath.row) { success in
                 if success {
-                    self.issueViewModel.removeItem(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .automatic)
+                    print("\(issue.id) 삭제")
                 }
-                print("\(issue.id) 삭제")
-                completionHandler(true)
+                completionHandler(success)
             }
         }
         
@@ -110,14 +109,14 @@ extension IssueListController: UITableViewDataSource, UITableViewDelegate {
                 return
             }
             
-            NetworkManager.shared.closeIssue(issueId: issue.id) { success in
+            self.issueViewModel.closeIssue(at: indexPath.row) { success in
                 if success {
-                    self.issueViewModel.removeItem(at: indexPath.row)
                     tableView.deleteRows(at: [indexPath], with: .automatic)
+                    print("\(issue.id) 닫기")
                 }
-                print("\(issue.id) 닫기")
-                completionHandler(true)
+                completionHandler(success)
             }
+            
         }
         
         let config = UISwipeActionsConfiguration(actions: [deleteAction, closeAction])

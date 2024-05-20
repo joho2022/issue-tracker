@@ -6,90 +6,19 @@
 //
 
 import Foundation
-import os
 
-final class HTTPManager {
+protocol HTTPManagerProtocol {
+    func sendRequest(_ request: URLRequest, completion: @escaping (Data?, HTTPURLResponse?, Error?) -> Void)
+}
+
+final class HTTPManager: HTTPManagerProtocol {
+    static let shared = HTTPManager()
     
-    static func requestGET(url: String, completion: @escaping (Data) -> Void) {
-        guard let url = URL(string: url) else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, response, _ in
-            guard let data = data else { return }
-            guard let response = response as? HTTPURLResponse, (200..<300).contains(response.statusCode) else {
-                if let response = response as? HTTPURLResponse {
-                    os_log("[ requestGET ] : \(response.statusCode)")
-                }
-                return
+    func sendRequest(_ request: URLRequest, completion: @escaping (Data?, HTTPURLResponse?, (any Error)?) -> Void) {
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async {
+                completion(data, response as? HTTPURLResponse, error)
             }
-                  
-            completion(data)
-        }.resume()
-    }
-    
-    static func requestPOST(url: String, encodingData: Data = Data(), completion: @escaping (Bool) -> Void) {
-        guard let url = URL(string: url) else {
-            completion(false)
-            return
-        }
-        
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = HTTPMethod.post.rawValue
-        urlRequest.httpBody = encodingData
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        URLSession.shared.dataTask(with: urlRequest) { data, response, _ in
-            guard data != nil else { return }
-            guard let response = response as? HTTPURLResponse, (200..<300).contains(response.statusCode) else {
-                if let response = response as? HTTPURLResponse {
-                    os_log("[ requestPOST ] : \(response.statusCode)")
-                }
-                return
-            }
-            
-            completion(true)
-        }.resume()
-    }
-    
-    static func requestPATCH(url: String, encodingData: Data = Data(), completion: @escaping (Data) -> Void) {
-        guard let url = URL(string: url) else { return }
-        
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = HTTPMethod.patch.rawValue
-        urlRequest.httpBody = encodingData
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        URLSession.shared.dataTask(with: urlRequest) { data, response, _ in
-            guard let data = data else { return }
-            guard let response = response as? HTTPURLResponse, (200..<300).contains(response.statusCode) else {
-                if let response = response as? HTTPURLResponse {
-                    os_log("[ requestPATCH ] : \(response.statusCode.description)")
-                }
-                return
-            }
-            
-            completion(data)
-        }.resume()
-    }
-    
-    static func requestDELETE(url: String, completion: @escaping (Bool) -> Void) {
-        guard let url = URL(string: url) else {
-            completion(false)
-            return
-        }
-        
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = HTTPMethod.delete.rawValue
-        
-        URLSession.shared.dataTask(with: urlRequest) { data, response, _ in
-            guard data != nil else { return }
-            guard let response = response as? HTTPURLResponse, (200..<300).contains(response.statusCode) else {
-                if let response = response as? HTTPURLResponse {
-                    os_log("[ requestDELETE ] : \(response.statusCode)")
-                }
-                return
-            }
-            
-            completion(true)
         }.resume()
     }
 }

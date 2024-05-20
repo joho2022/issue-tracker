@@ -39,10 +39,12 @@ class IssueDetailViewController: UIViewController {
     
     private func fetchIssueDetail(issueId: Int) {
         NetworkManager.shared.fetchIssueDetail(issueId: issueId) { [weak self] issueDetail in
-            if let issueDetail = issueDetail {
-                self?.issueDetail = issueDetail
-                self?.commentViewModel.updateItems(with: issueDetail.comments)
-                self?.tableView.reloadData()
+            DispatchQueue.main.async {
+                if let issueDetail = issueDetail {
+                    self?.issueDetail = issueDetail
+                    self?.commentViewModel.updateItems(with: issueDetail.comments)
+                    self?.tableView.reloadData()
+                }
             }
         }
     }

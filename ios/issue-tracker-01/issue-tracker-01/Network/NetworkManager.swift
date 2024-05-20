@@ -10,64 +10,97 @@ import os
 
 class NetworkManager {
     static let shared = NetworkManager()
+    private let httpManager: HTTPManagerProtocol
+    
+    init(httpManager: HTTPManagerProtocol = HTTPManager.shared) {
+        self.httpManager = httpManager
+    }
     
     func fetchIssues(completion: @escaping ([Issue]?) -> Void) {
-        HTTPManager.requestGET(url: URLDefines.issueList) { data in
+        guard let url = URL(string: URLDefines.issueList) else {
+            completion(nil)
+            return
+        }
+        
+        let request = URLRequest(url: url)
+        
+        httpManager.sendRequest(request) { data, _, error in
+            guard let data = data, error == nil else {
+                os_log("[ fetchIssues ] : \(String(describing: error))")
+                completion(nil)
+                return
+            }
+            
             do {
                 let issues = try JSONDecoder().decode([Issue].self, from: data)
-                
                 self.prettyPrintJSON(issues)
-                
-                DispatchQueue.main.async {
-                    completion(issues)
-                }
+                completion(issues)
             } catch {
                 os_log("[ fetchIssues ] : \(error)")
-                DispatchQueue.main.async {
-                    completion(nil)
-                }
+                completion(nil)
             }
         }
     }
     
     func fetchIssueDetail(issueId: Int, completion: @escaping (IssueDetail?) -> Void) {
-        let url = URLDefines.issue + "/\(issueId)"
+        guard let url = URL(string: URLDefines.issue + "/\(issueId)") else {
+            completion(nil)
+            return
+        }
+        let request = URLRequest(url: url)
         
-        HTTPManager.requestGET(url: url) { data in
+        httpManager.sendRequest(request) { data, _, error in
+            guard let data = data, error == nil else {
+                os_log("[ fetchIssueDetail ] : \(String(describing: error))")
+                completion(nil)
+                return
+            }
+            
             do {
                 let issueDetail = try JSONDecoder().decode(IssueDetail.self, from: data)
-                
                 self.prettyPrintJSON(issueDetail)
-                
-                DispatchQueue.main.async {
-                    completion(issueDetail)
-                }
+                completion(issueDetail)
+                return
             } catch {
                 os_log("[ fetchIssueDetail ] : \(error)")
-                DispatchQueue.main.async {
-                    completion(nil)
-                }
+                completion(nil)
             }
         }
     }
     
     func deleteIssue(issueId: Int, completion: @escaping (Bool) -> Void) {
-        let url = URLDefines.issue + "/\(issueId)"
+        guard let url = URL(string: URLDefines.issue + "/\(issueId)") else {
+            completion(false)
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.delete.rawValue
         
-        HTTPManager.requestDELETE(url: url) { success in
-            DispatchQueue.main.async {
-                completion(success)
+        httpManager.sendRequest(request) { _, response, error in
+            guard let response = response, (200..<300).contains(response.statusCode) else {
+                os_log("[ deleteIssue ] : \(String(describing: error))")
+                completion(false)
+                return
             }
+            completion(true)
         }
     }
     
     func closeIssue(issueId: Int, completion: @escaping (Bool) -> Void) {
-        let url = URLDefines.issue + "/\(issueId)/close"
+        guard let url = URL(string: URLDefines.issue + "/\(issueId)/close") else {
+            completion(false)
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.post.rawValue
         
-        HTTPManager.requestPOST(url: url) { success in
-            DispatchQueue.main.async {
-                completion(success)
+        httpManager.sendRequest(request) { _, response, error in
+            guard let response = response, (200..<300).contains(response.statusCode) else {
+                os_log("[ closeIssue ] : \(String(describing: error))")
+                completion(false)
+                return
             }
+            completion(true)
         }
     }
     
