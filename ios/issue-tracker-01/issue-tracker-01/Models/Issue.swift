@@ -10,7 +10,7 @@ import Foundation
 struct Issue: Codable {
     let id: Int
     let title: String
-    let comment: String
+    let comment: String?
     let labels: [Label]?
     let milestone: Milestone?
 }

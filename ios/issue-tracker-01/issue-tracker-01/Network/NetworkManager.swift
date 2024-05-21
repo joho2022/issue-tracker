@@ -75,6 +75,7 @@ class NetworkManager {
         }
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.delete.rawValue
+        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MyIsImlhdCI6MTcxNjI3MTEzMywiZXhwIjoxNzE2MzA3MTMzfQ.vMLs505L4wgEbY877ERnfD1T-HStzWG6yA-Mg5MEy78", forHTTPHeaderField: "Authorization")
         
         httpManager.sendRequest(request) { _, response, error in
             guard let response = response, (200..<300).contains(response.statusCode) else {
@@ -93,10 +94,11 @@ class NetworkManager {
         }
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.post.rawValue
+        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MyIsImlhdCI6MTcxNjI3MTEzMywiZXhwIjoxNzE2MzA3MTMzfQ.vMLs505L4wgEbY877ERnfD1T-HStzWG6yA-Mg5MEy78", forHTTPHeaderField: "Authorization")
         
         httpManager.sendRequest(request) { _, response, error in
             guard let response = response, (200..<300).contains(response.statusCode) else {
-                os_log("[ closeIssue ] : \(String(describing: error))")
+                os_log("[ closeIssue ] : \(String(describing: error))\n\(String(describing: response?.statusCode))")
                 completion(false)
                 return
             }
@@ -125,6 +127,65 @@ class NetworkManager {
             } catch {
                 os_log("[ fetchLabels ]: \(error)")
                 completion(nil)
+            }
+        }
+    }
+    
+    func deleteLabel(labelId: Int, completion: @escaping (Bool) -> Void) {
+        guard let url = URL(string: URLDefines.label + "/\(labelId)") else {
+            completion(false)
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.delete.rawValue
+        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MyIsImlhdCI6MTcxNjI3MTEzMywiZXhwIjoxNzE2MzA3MTMzfQ.vMLs505L4wgEbY877ERnfD1T-HStzWG6yA-Mg5MEy78", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        httpManager.sendRequest(request) { _, response, error in
+            guard let response = response, (200..<300).contains(response.statusCode) else {
+                os_log("[ deleteLabel ] : \(String(describing: error))\n\(String(describing: response?.statusCode))")
+                completion(false)
+                return
+            }
+            completion(true)
+        }
+    }
+    
+    func updateLabel(labelId: Int, labelRequest: LabelRequest, completion: @escaping (Bool, Label?) -> Void) {
+        guard let url = URL(string: URLDefines.label + "/\(labelId)") else {
+            completion(false, nil)
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.patch.rawValue
+        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MyIsImlhdCI6MTcxNjI3MTEzMywiZXhwIjoxNzE2MzA3MTMzfQ.vMLs505L4wgEbY877ERnfD1T-HStzWG6yA-Mg5MEy78", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let jsonData = try JSONEncoder().encode(labelRequest)
+            request.httpBody = jsonData
+        } catch {
+            os_log("[ updateLabel ]: \(error)")
+            completion(false, nil)
+            return
+        }
+        
+        httpManager.sendRequest(request) { data, response, error in
+            guard let data = data, error == nil,
+                  let response = response, (200..<300).contains(response.statusCode) else {
+                os_log("[ updateLabel ] : \(String(describing: error?.localizedDescription))\n[ statusCode ]: \(String(describing: response?.statusCode))")
+                
+                completion(false, nil)
+                return
+            }
+            
+            do {
+                let decodedLabel = try JSONDecoder().decode(Label.self, from: data)
+                completion(true, decodedLabel)
+            } catch {
+                os_log("[ updateLabel ] : \(error)")
+                completion(false, nil)
             }
         }
     }

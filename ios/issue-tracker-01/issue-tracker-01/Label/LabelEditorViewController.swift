@@ -11,6 +11,10 @@ class LabelEditorViewController: UIViewController {
     
     static let identifier: String = "LabelEditorViewController"
     
+    var labelToEdit: Label?
+    var labelIndex: Int?
+    var isEditingMode = false
+    
     var labelViewModel: LabelViewModel!
 
     @IBOutlet weak var titleLabel: UILabel!
@@ -31,6 +35,21 @@ class LabelEditorViewController: UIViewController {
         configureNavigationBar()
         configureTextField()
         setupLayout()
+        configureForEditing()
+    }
+    
+    private func configureForEditing() {
+        guard let label = labelToEdit else { return }
+        
+        let color = UIColor(hex: label.color)
+        
+        isEditingMode = true
+        titleField.text = label.name
+        descriptionField.text = label.description
+        backgroundValueLabel.text = label.color
+        labelLabel.text = label.name
+        labelLabel.backgroundColor = color
+        labelLabel.textColor = color.isDarkColor ? .gray50 : .gray900
     }
     
     private func setupLayout() {
@@ -75,12 +94,24 @@ class LabelEditorViewController: UIViewController {
         }
         
         let labelRequest = LabelRequest(name: name, description: description, color: color)
-        labelViewModel.createLabel(labelRequest: labelRequest) { success in
-            if success {
-                print("[\(labelRequest.name)]: 레이블 생성!")
-                self.navigationController?.dismiss(animated: true)
-            } else {
-                print("레이블 생성실패")
+        
+        if isEditingMode, let index = labelIndex {
+            labelViewModel.updateLabel(at: index, labelRequest: labelRequest) { success in
+                if success {
+                    print("[\(labelRequest.name)]: 레이블 편집!")
+                    self.navigationController?.dismiss(animated: true)
+                } else {
+                    print("레이블 편집실패")
+                }
+            }
+        } else {
+            labelViewModel.createLabel(labelRequest: labelRequest) { success in
+                if success {
+                    print("[\(labelRequest.name)]: 레이블 생성!")
+                    self.navigationController?.dismiss(animated: true)
+                } else {
+                    print("레이블 생성실패")
+                }
             }
         }
     }
@@ -101,7 +132,6 @@ class LabelEditorViewController: UIViewController {
         let color = UIColor(hex: randomHexColor)
         backgroundValueLabel.text = randomHexColor
         labelLabel.backgroundColor = color
-        labelLabel.text = titleField.text
         labelLabel.textColor = color.isDarkColor ? .gray50 : .gray900
         validateFields()
     }

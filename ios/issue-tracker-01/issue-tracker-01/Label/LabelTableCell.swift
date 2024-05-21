@@ -11,7 +11,7 @@ class LabelTableCell: UITableViewCell {
 
     static let identifier: String = "LabelTableCell"
     
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var nameLabel: LabelTableCellPaddingLabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
     override func awakeFromNib() {
@@ -29,8 +29,11 @@ class LabelTableCell: UITableViewCell {
     }
     
     func setLabel(_ data: Label) {
+        let color = UIColor(hex: data.color)
+        
         self.nameLabel.text = data.name
-        self.nameLabel.backgroundColor = UIColor(hex: data.color)
+        self.nameLabel.backgroundColor = color
+        self.nameLabel.textColor = color.isDarkColor ? .gray50 : .gray900
         self.descriptionLabel.text = data.description
     }
 }

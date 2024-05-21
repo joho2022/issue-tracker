@@ -11,7 +11,7 @@ class LabelViewModel: BaseViewModel<Label> {
     static let shared = LabelViewModel()
     
     enum Notifications {
-        static let labelCreated = Notification.Name("labelCreated")
+        static let labelUpdated = Notification.Name("labelUpdated")
     }
     
     func fetchLabels(completion: @escaping () -> Void) {
@@ -23,12 +23,51 @@ class LabelViewModel: BaseViewModel<Label> {
         }
     }
     
+    func deleteLabel(at index: Int, completion: @escaping (Bool) -> Void) {
+        guard let label = item(at: index) else {
+            completion(false)
+            return
+        }
+        
+        NetworkManager.shared.deleteLabel(labelId: label.id) { [weak self] success in
+            
+            if success {
+                self?.removeItem(at: index)
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+        
+    }
+    
+    func updateLabel(at index: Int, labelRequest: LabelRequest, completion: @escaping (Bool) -> Void) {
+        guard let labelToUpdate = item(at: index) else {
+            completion(false)
+            return
+        }
+        
+        NetworkManager.shared.updateLabel(labelId: labelToUpdate.id, labelRequest: labelRequest) { [weak self] success, updatedLabel in
+            DispatchQueue.main.async {
+                if success, let updatedLabel = updatedLabel {
+                    self?.updateItem(at: index, updatedLabel)
+                    NotificationCenter.default.post(name: Self.Notifications.labelUpdated,
+                                                    object: self
+                    )
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            }
+        }
+    }
+    
     func createLabel(labelRequest: LabelRequest, completion: @escaping (Bool) -> Void) {
         NetworkManager.shared.createLabel(label: labelRequest) { [weak self] success, createdLabel in
             DispatchQueue.main.async {
                 if success, let newLabel = createdLabel {
                     self?.appendItem(newLabel)
-                    NotificationCenter.default.post(name: Self.Notifications.labelCreated,
+                    NotificationCenter.default.post(name: Self.Notifications.labelUpdated,
                                                     object: self
                     )
                     completion(true)

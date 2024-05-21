@@ -28,7 +28,7 @@ class LabelListController: UIViewController {
     private func registerForNotifications() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(handleLabelCreated),
-                                               name: LabelViewModel.Notifications.labelCreated,
+                                               name: LabelViewModel.Notifications.labelUpdated,
                                                object: nil
         )
     }
@@ -41,7 +41,7 @@ class LabelListController: UIViewController {
         tableView.register(UINib(nibName: LabelTableCell.identifier, bundle: .main), forCellReuseIdentifier: LabelTableCell.identifier)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = 84
+        tableView.rowHeight = 100
     }
     
     private func fetchLabels() {
@@ -82,5 +82,46 @@ extension LabelListController: UITableViewDataSource, UITableViewDelegate {
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = createSwipeAction(title: "삭제",
+                                             color: .myRed,
+                                             image: UIImage(systemName: "trash.fill"),
+                                             style: .destructive) { _, _, completionHandler in
+            guard let label = self.labelViewModel.item(at: indexPath.row) else {
+                completionHandler(false)
+                return
+            }
+            
+            self.labelViewModel.deleteLabel(at: indexPath.row) { success in
+                if success {
+                    tableView.deleteRows(at: [indexPath], with: .automatic)
+                    print("\(label.id) 삭제")
+                }
+                completionHandler(success)
+            }
+        }
+        
+        let editAction = createSwipeAction(title: "편집",
+                                           color: .myPurple,
+                                           image: UIImage(systemName: "pencil"),
+                                           style: .destructive) { _, _, completionHandler in
+            guard let label = self.labelViewModel.item(at: indexPath.row) else {
+                completionHandler(false)
+                return
+            }
+            
+            let labelEditorVC = LabelEditorViewController(nibName: LabelEditorViewController.identifier, bundle: nil)
+            labelEditorVC.labelToEdit = label
+            labelEditorVC.labelIndex = indexPath.row
+            let navigationController = UINavigationController(rootViewController: labelEditorVC)
+            self.present(navigationController, animated: true)
+            completionHandler(true)
+        }
+        
+        let config = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+        config.performsFirstActionWithFullSwipe = false
+        return config
     }
 }
