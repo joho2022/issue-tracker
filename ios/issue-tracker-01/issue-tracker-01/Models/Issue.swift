@@ -44,6 +44,12 @@ struct Label: Codable {
     let color: String
 }
 
+struct LabelRequest: Codable {
+    let name: String
+    let description: String
+    let color: String
+}
+
 struct Milestone: Codable {
     let id: Int
     let title: String

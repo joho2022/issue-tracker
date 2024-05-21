@@ -30,11 +30,8 @@ class IssueListController: UIViewController {
     }
     
     private func fetchIssues() {
-        NetworkManager.shared.fetchIssues { [weak self] issues in
-            DispatchQueue.main.async {
-                self?.issueViewModel.updateItems(with: issues ?? [])
-                self?.tableView.reloadData()
-            }
+        self.issueViewModel.fetchIssues {
+            self.tableView.reloadData()
         }
     }
     

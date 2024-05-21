@@ -12,4 +12,6 @@ enum URLDefines {
     private static let base = "http://13.125.246.130:8080"
     static let issue = "\(base)/issue"
     static let issueList = "\(base)/issue/list"
+    static let label = "\(base)/label"
+    static let labelList = "\(base)/label/list"
 }

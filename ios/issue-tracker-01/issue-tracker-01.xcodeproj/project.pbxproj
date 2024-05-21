@@ -22,6 +22,10 @@
 		D61179782BECA9D400E7C267 /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61179762BECA9D400E7C267 /* LabelCell.swift */; };
 		D61179792BECA9D400E7C267 /* labelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D61179772BECA9D400E7C267 /* labelCell.xib */; };
 		D61AAC872BFAD62700D35399 /* IssueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AAC862BFAD62700D35399 /* IssueViewModel.swift */; };
+		D61AAC892BFAF1A600D35399 /* LabelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AAC882BFAF1A600D35399 /* LabelViewModel.swift */; };
+		D61AAC8C2BFB884500D35399 /* LabelEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D61AAC8B2BFB884500D35399 /* LabelEditorViewController.xib */; };
+		D61AAC8D2BFB884500D35399 /* LabelEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AAC8A2BFB884500D35399 /* LabelEditorViewController.swift */; };
+		D61AAC8F2BFC3AB400D35399 /* LabelEditorPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AAC8E2BFC3AB400D35399 /* LabelEditorPaddingLabel.swift */; };
 		D6369F462BEA0F8F001BDAAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6369F452BEA0F8F001BDAAB /* AppDelegate.swift */; };
 		D6369F482BEA0F8F001BDAAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6369F472BEA0F8F001BDAAB /* SceneDelegate.swift */; };
 		D6369F4A2BEA0F8F001BDAAB /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6369F492BEA0F8F001BDAAB /* LoginController.swift */; };
@@ -89,6 +93,10 @@
 		D61179762BECA9D400E7C267 /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
 		D61179772BECA9D400E7C267 /* labelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = labelCell.xib; sourceTree = "<group>"; };
 		D61AAC862BFAD62700D35399 /* IssueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueViewModel.swift; sourceTree = "<group>"; };
+		D61AAC882BFAF1A600D35399 /* LabelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewModel.swift; sourceTree = "<group>"; };
+		D61AAC8A2BFB884500D35399 /* LabelEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelEditorViewController.swift; sourceTree = "<group>"; };
+		D61AAC8B2BFB884500D35399 /* LabelEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelEditorViewController.xib; sourceTree = "<group>"; };
+		D61AAC8E2BFC3AB400D35399 /* LabelEditorPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelEditorPaddingLabel.swift; sourceTree = "<group>"; };
 		D6369F422BEA0F8F001BDAAB /* issue-tracker-01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "issue-tracker-01.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6369F452BEA0F8F001BDAAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6369F472BEA0F8F001BDAAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +182,9 @@
 				D61179572BEC62D200E7C267 /* LabelListController.swift */,
 				D642E2702BF740A400ACAE45 /* LabelTableCell.swift */,
 				D642E2712BF740A400ACAE45 /* LabelTableCell.xib */,
+				D61AAC8A2BFB884500D35399 /* LabelEditorViewController.swift */,
+				D61AAC8B2BFB884500D35399 /* LabelEditorViewController.xib */,
+				D61AAC8E2BFC3AB400D35399 /* LabelEditorPaddingLabel.swift */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -220,6 +231,7 @@
 				D61179732BEC8FA900E7C267 /* Issue.swift */,
 				D6A632162BF46ACC000E9C30 /* BaseViewModel.swift */,
 				D61AAC862BFAD62700D35399 /* IssueViewModel.swift */,
+				D61AAC882BFAF1A600D35399 /* LabelViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -445,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D61179502BEB792D00E7C267 /* .swiftlint.yml in Resources */,
+				D61AAC8C2BFB884500D35399 /* LabelEditorViewController.xib in Resources */,
 				D642E2732BF740A400ACAE45 /* LabelTableCell.xib in Resources */,
 				D642E2662BF6182B00ACAE45 /* IssueEditorViewController.xib in Resources */,
 				D642E26F2BF717BB00ACAE45 /* EditorOptionViewController.xib in Resources */,
@@ -506,9 +519,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D61AAC8D2BFB884500D35399 /* LabelEditorViewController.swift in Sources */,
 				D6A631FB2BF1FE5A000E9C30 /* NetworkManager.swift in Sources */,
 				D642E26A2BF6EFD000ACAE45 /* EditorOptionCell.swift in Sources */,
+				D61AAC892BFAF1A600D35399 /* LabelViewModel.swift in Sources */,
 				D6A631FD2BF20BAC000E9C30 /* URLDefines.swift in Sources */,
+				D61AAC8F2BFC3AB400D35399 /* LabelEditorPaddingLabel.swift in Sources */,
 				D6A632032BF22217000E9C30 /* HTTPMethod.swift in Sources */,
 				D611796B2BEC733200E7C267 /* UILabel+Extensions.swift in Sources */,
 				D6369F4A2BEA0F8F001BDAAB /* LoginController.swift in Sources */,

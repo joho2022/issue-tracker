@@ -13,6 +13,7 @@ protocol ItemManaging: AnyObject {
     func updateItems(with newItems: [T])
     func item(at index: Int) -> T?
     func removeItem(at index: Int)
+    func appendItem(_ item: T)
 }
 
 class BaseViewModel<T>: ItemManaging {
@@ -35,5 +36,9 @@ class BaseViewModel<T>: ItemManaging {
         if index >= 0 && index < items.count {
             items.remove(at: index)
         }
+    }
+    
+    func appendItem(_ item: T) {
+        self.items.append(item)
     }
 }

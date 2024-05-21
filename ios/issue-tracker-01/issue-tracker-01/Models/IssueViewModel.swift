@@ -8,6 +8,15 @@
 import Foundation
 
 class IssueViewModel: BaseViewModel<Issue> {
+    func fetchIssues(completion: @escaping () -> Void) {
+        NetworkManager.shared.fetchIssues { [weak self] issues in
+            DispatchQueue.main.async {
+                self?.updateItems(with: issues ?? [])
+                completion()
+            }
+        }
+    }
+    
     func deleteIssue(at index: Int, completion: @escaping (Bool) -> Void) {
         guard let issue = item(at: index) else {
             completion(false)

@@ -104,6 +104,69 @@ class NetworkManager {
         }
     }
     
+    func fetchLabels(completion: @escaping ([Label]?) -> Void) {
+        guard let url = URL(string: URLDefines.labelList) else {
+            completion(nil)
+            return
+        }
+        let request = URLRequest(url: url)
+        
+        httpManager.sendRequest(request) { data, _, error in
+            guard let data = data, error == nil else {
+                os_log("[ fetchLabels ] : \(String(describing: error))")
+                completion(nil)
+                return
+            }
+            
+            do {
+                let labels = try JSONDecoder().decode([Label].self, from: data)
+                self.prettyPrintJSON(labels)
+                completion(labels)
+            } catch {
+                os_log("[ fetchLabels ]: \(error)")
+                completion(nil)
+            }
+        }
+    }
+    
+    func createLabel(label: LabelRequest, completion: @escaping (Bool, Label?) -> Void) {
+        guard let url = URL(string: URLDefines.label) else {
+            completion(false, nil)
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MyIsImlhdCI6MTcxNjI3MTEzMywiZXhwIjoxNzE2MzA3MTMzfQ.vMLs505L4wgEbY877ERnfD1T-HStzWG6yA-Mg5MEy78", forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let jsonData = try JSONEncoder().encode(label)
+            request.httpBody = jsonData
+        } catch {
+            os_log("[ createLabel ]: \(error)")
+            completion(false, nil)
+            return
+        }
+        
+        httpManager.sendRequest(request) { data, response, error in
+            guard let data = data, error == nil,
+                  let response = response, (200..<300).contains(response.statusCode) else {
+                os_log("[ createLabel ] : \(String(describing: error?.localizedDescription))\n[ statusCode ]: \(String(describing: response?.statusCode))")
+                
+                completion(false, nil)
+                return
+            }
+            do {
+                let decodedLabel = try JSONDecoder().decode(Label.self, from: data)
+                completion(true, decodedLabel)
+            } catch {
+                os_log("[ createLabel ] : \(String(describing: error))")
+                completion(false, nil)
+            }
+        }
+    }
+    
     private func prettyPrintJSON<T: Encodable>(_ item: T) {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
