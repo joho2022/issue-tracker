@@ -11,7 +11,7 @@ class LabelTableCell: UITableViewCell {
 
     static let identifier: String = "LabelTableCell"
     
-    @IBOutlet weak var nameLabel: LabelTableCellPaddingLabel!
+    @IBOutlet weak var nameLabel: LabelEditorPaddingLabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
     override func awakeFromNib() {

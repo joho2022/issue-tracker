@@ -117,7 +117,7 @@
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise" catalog="system"/>
                                     <connections>
-                                        <action selector="colorBtnTapped:" destination="-1" eventType="touchUpInside" id="ri8-SM-jvP"/>
+                                        <action selector="colorButtonTapped:" destination="-1" eventType="touchUpInside" id="Ni9-vR-fBt"/>
                                     </connections>
                                 </button>
                             </subviews>

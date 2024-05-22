@@ -22,7 +22,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGF-vu-3ZT" customClass="LabelTableCellPaddingLabel" customModule="issue_tracker_01" customModuleProvider="target">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gGF-vu-3ZT" customClass="LabelEditorPaddingLabel" customModule="issue_tracker_01" customModuleProvider="target">
                         <rect key="frame" x="24.000000000000004" y="40" width="41.333333333333343" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="1GI-GD-bA7"/>

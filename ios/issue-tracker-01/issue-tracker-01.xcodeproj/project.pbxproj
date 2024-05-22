@@ -26,7 +26,6 @@
 		D61AAC8C2BFB884500D35399 /* LabelEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D61AAC8B2BFB884500D35399 /* LabelEditorViewController.xib */; };
 		D61AAC8D2BFB884500D35399 /* LabelEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AAC8A2BFB884500D35399 /* LabelEditorViewController.swift */; };
 		D61AAC8F2BFC3AB400D35399 /* LabelEditorPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AAC8E2BFC3AB400D35399 /* LabelEditorPaddingLabel.swift */; };
-		D61AAC912BFC95CB00D35399 /* LabelTableCellPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AAC902BFC95CB00D35399 /* LabelTableCellPaddingLabel.swift */; };
 		D6369F462BEA0F8F001BDAAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6369F452BEA0F8F001BDAAB /* AppDelegate.swift */; };
 		D6369F482BEA0F8F001BDAAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6369F472BEA0F8F001BDAAB /* SceneDelegate.swift */; };
 		D6369F4A2BEA0F8F001BDAAB /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6369F492BEA0F8F001BDAAB /* LoginController.swift */; };
@@ -98,7 +97,6 @@
 		D61AAC8A2BFB884500D35399 /* LabelEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelEditorViewController.swift; sourceTree = "<group>"; };
 		D61AAC8B2BFB884500D35399 /* LabelEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelEditorViewController.xib; sourceTree = "<group>"; };
 		D61AAC8E2BFC3AB400D35399 /* LabelEditorPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelEditorPaddingLabel.swift; sourceTree = "<group>"; };
-		D61AAC902BFC95CB00D35399 /* LabelTableCellPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableCellPaddingLabel.swift; sourceTree = "<group>"; };
 		D6369F422BEA0F8F001BDAAB /* issue-tracker-01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "issue-tracker-01.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6369F452BEA0F8F001BDAAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6369F472BEA0F8F001BDAAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 				D61AAC8A2BFB884500D35399 /* LabelEditorViewController.swift */,
 				D61AAC8B2BFB884500D35399 /* LabelEditorViewController.xib */,
 				D61AAC8E2BFC3AB400D35399 /* LabelEditorPaddingLabel.swift */,
-				D61AAC902BFC95CB00D35399 /* LabelTableCellPaddingLabel.swift */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -552,7 +549,6 @@
 				D6A632272BF5E045000E9C30 /* IssueDetailHeaderView.swift in Sources */,
 				D61179692BEC6F3200E7C267 /* FontManager.swift in Sources */,
 				D6A631EF2BEFDB72000E9C30 /* UIColor+Extensions.swift in Sources */,
-				D61AAC912BFC95CB00D35399 /* LabelTableCellPaddingLabel.swift in Sources */,
 				D6369F482BEA0F8F001BDAAB /* SceneDelegate.swift in Sources */,
 				D611795A2BEC62F100E7C267 /* MilestoneListController.swift in Sources */,
 				D611795C2BEC630300E7C267 /* ProfileController.swift in Sources */,
