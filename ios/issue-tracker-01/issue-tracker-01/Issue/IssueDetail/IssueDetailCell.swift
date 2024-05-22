@@ -68,20 +68,20 @@ class IssueDetailCell: UITableViewCell {
         
         if comment.authorName == issueAuthor {
             self.authorLabel.isHidden = false
-            self.actionButton.addTarget(self, action: #selector(moreBtnTapped), for: .touchUpInside)
+            self.actionButton.addTarget(self, action: #selector(moreButtonTapped), for: .touchUpInside)
         } else {
             self.authorLabel.isHidden = true
             self.actionButton.setImage(heartImage, for: .normal)
-            self.actionButton.addTarget(self, action: #selector(heartBtnTapped), for: .touchUpInside)
+            self.actionButton.addTarget(self, action: #selector(heartButtonTapped), for: .touchUpInside)
         }
     }
     
-    @objc private func moreBtnTapped() {
+    @objc private func moreButtonTapped() {
         print("more버튼 Tapped!")
         animateButton()
     }
     
-    @objc private func heartBtnTapped() {
+    @objc private func heartButtonTapped() {
         print("하트버튼 Tapped!")
         animateButton()
     }

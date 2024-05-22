@@ -53,24 +53,24 @@ class IssueDetailViewController: UIViewController {
         let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"),
                                          style: .plain,
                                          target: self,
-                                         action: #selector(backBtnTapped)
+                                         action: #selector(backButtonTapped)
         )
         navigationItem.leftBarButtonItem = backButton
         
         let moreButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis"),
                                          style: .plain,
                                          target: self,
-                                         action: #selector(moreBtnTapped)
+                                         action: #selector(moreButtonTapped)
         )
         navigationItem.rightBarButtonItem = moreButton
     }
     
-    @objc private func backBtnTapped() {
+    @objc private func backButtonTapped() {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc private func moreBtnTapped() {
-        print("이슈에 대한moreBtnTapped!!")
+    @objc private func moreButtonTapped() {
+        print("이슈에 대한moreButtonTapped!!")
     }
 }
 

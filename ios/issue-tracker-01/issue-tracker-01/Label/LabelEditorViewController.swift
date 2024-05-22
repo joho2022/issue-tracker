@@ -69,24 +69,24 @@ class LabelEditorViewController: UIViewController {
         let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"),
                                          style: .plain,
                                          target: self,
-                                         action: #selector(backBtnTapped)
+                                         action: #selector(backButtonTapped)
         )
         navigationItem.leftBarButtonItem = backButton
         
         let saveButton = UIBarButtonItem(title: "저장",
                                          style: .plain,
                                          target: self,
-                                         action: #selector(saveBtnTapped)
+                                         action: #selector(saveButtonTapped)
         )
         navigationItem.rightBarButtonItem = saveButton
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
-    @objc private func backBtnTapped() {
+    @objc private func backButtonTapped() {
         navigationController?.dismiss(animated: true)
     }
     
-    @objc private func saveBtnTapped() {
+    @objc private func saveButtonTapped() {
         guard let name = titleField.text, !name.isEmpty,
               let description = descriptionField.text,
               let color = backgroundValueLabel.text, !color.isEmpty else {
@@ -127,7 +127,7 @@ class LabelEditorViewController: UIViewController {
         }
     }
     
-    @IBAction func colorBtnTapped(_ sender: Any) {
+    @IBAction func colorButtonTapped(_ sender: Any) {
         let randomHexColor = generateRandomHexColor()
         let color = UIColor(hex: randomHexColor)
         backgroundValueLabel.text = randomHexColor

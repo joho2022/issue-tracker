@@ -27,13 +27,13 @@ class LabelListController: UIViewController {
     
     private func registerForNotifications() {
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(handleLabelCreated),
+                                               selector: #selector(handleLabelUpdated),
                                                name: LabelViewModel.Notifications.labelUpdated,
                                                object: nil
         )
     }
     
-    @objc private func handleLabelCreated(notification: Notification) {
+    @objc private func handleLabelUpdated(notification: Notification) {
         self.tableView.reloadData()
     }
     
@@ -54,12 +54,12 @@ class LabelListController: UIViewController {
         let addButton = UIBarButtonItem(title: "추가",
                                         style: .plain,
                                         target: self,
-                                        action: #selector(addBtnTapped)
+                                        action: #selector(addButtonTapped)
         )
         navigationItem.rightBarButtonItem = addButton
     }
     
-    @objc private func addBtnTapped() {
+    @objc private func addButtonTapped() {
         let labelEditorVC = LabelEditorViewController(nibName: LabelEditorViewController.identifier, bundle: nil)
         
         let navigationController = UINavigationController(rootViewController: labelEditorVC)

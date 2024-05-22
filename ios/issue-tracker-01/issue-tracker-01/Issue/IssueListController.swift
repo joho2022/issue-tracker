@@ -19,7 +19,7 @@ class IssueListController: UIViewController {
         setupTableView()
         
         fetchIssues()
-        setupFAB()
+        setupPlusButton()
     }
     
     private func setupTableView() {
@@ -35,27 +35,27 @@ class IssueListController: UIViewController {
         }
     }
     
-    private func setupFAB() {
-        let fabButton = UIButton(type: .custom)
-        fabButton.backgroundColor = .myBlue
-        fabButton.setImage(UIImage(systemName: "plus"), for: .normal)
-        fabButton.tintColor = .gray50
-        fabButton.layer.cornerRadius = 28
-        fabButton.translatesAutoresizingMaskIntoConstraints = false
+    private func setupPlusButton() {
+        let plusButton = UIButton(type: .custom)
+        plusButton.backgroundColor = .myBlue
+        plusButton.setImage(UIImage(systemName: "plus"), for: .normal)
+        plusButton.tintColor = .gray50
+        plusButton.layer.cornerRadius = 28
+        plusButton.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(fabButton)
+        view.addSubview(plusButton)
         
         NSLayoutConstraint.activate([
-            fabButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
-            fabButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -23),
-            fabButton.widthAnchor.constraint(equalToConstant: 56),
-            fabButton.heightAnchor.constraint(equalToConstant: 56)
+            plusButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+            plusButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -23),
+            plusButton.widthAnchor.constraint(equalToConstant: 56),
+            plusButton.heightAnchor.constraint(equalToConstant: 56)
         ])
         
-        fabButton.addTarget(self, action: #selector(fabTapped), for: .touchUpInside)
+        plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
     }
     
-    @objc private func fabTapped() {
+    @objc private func plusButtonTapped() {
         let issueEditorVC = IssueEditorViewController(nibName: IssueEditorViewController.identifier, bundle: nil)
         navigationController?.pushViewController(issueEditorVC, animated: true)
     }

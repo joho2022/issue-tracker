@@ -23,14 +23,14 @@ class LoginController: UIViewController {
         self.githubView.layer.cornerRadius = 22
     }
 
-    @IBAction func loginBtnDidTap(_ sender: Any) {
+    @IBAction func loginButtonTapped(_ sender: Any) {
         self.view.window?.rootViewController = self.storyboard?.instantiateViewController(withIdentifier: "tabbar")
     }
     
-    @IBAction func appleBtnDidTap(_ sender: Any) {
+    @IBAction func appleButtonTapped(_ sender: Any) {
         print("애플 로그인")
     }
-    @IBAction func githubBtnDidTap(_ sender: Any) {
+    @IBAction func githubButtonTapped(_ sender: Any) {
         print("깃허브 로그인")
     }
 }
