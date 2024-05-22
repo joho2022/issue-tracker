@@ -12,6 +12,8 @@ class NetworkManager {
     static let shared = NetworkManager()
     private let httpManager: HTTPManagerProtocol
     
+    private let token = Bundle.main.object(forInfoDictionaryKey: "API_ACCESS_TOKEN") as? String
+    
     init(httpManager: HTTPManagerProtocol = HTTPManager.shared) {
         self.httpManager = httpManager
     }
@@ -21,7 +23,7 @@ class NetworkManager {
             completion(nil)
             return
         }
-        
+        print(url)
         let request = URLRequest(url: url)
         
         httpManager.sendRequest(request) { data, _, error in
@@ -73,9 +75,11 @@ class NetworkManager {
             completion(false)
             return
         }
+        guard let token = token else { return }
+        
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.delete.rawValue
-        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MiIsImlhdCI6MTcxNjM0MTY3NSwiZXhwIjoxNzE2Mzc3Njc1fQ.7U8ifNvhtCUUTN2bCSPKHvIMCryi8YkM2kaZfO_ZMyU", forHTTPHeaderField: "Authorization")
+        request.addValue(token, forHTTPHeaderField: "Authorization")
         
         httpManager.sendRequest(request) { _, response, error in
             guard let response = response, (200..<300).contains(response.statusCode) else {
@@ -92,9 +96,11 @@ class NetworkManager {
             completion(false)
             return
         }
+        guard let token = token else { return }
+        
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.post.rawValue
-        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MiIsImlhdCI6MTcxNjM0MTY3NSwiZXhwIjoxNzE2Mzc3Njc1fQ.7U8ifNvhtCUUTN2bCSPKHvIMCryi8YkM2kaZfO_ZMyU", forHTTPHeaderField: "Authorization")
+        request.addValue(token, forHTTPHeaderField: "Authorization")
         
         httpManager.sendRequest(request) { _, response, error in
             guard let response = response, (200..<300).contains(response.statusCode) else {
@@ -136,9 +142,11 @@ class NetworkManager {
             completion(false)
             return
         }
+        guard let token = token else { return }
+        
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.delete.rawValue
-        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MiIsImlhdCI6MTcxNjM0MTY3NSwiZXhwIjoxNzE2Mzc3Njc1fQ.7U8ifNvhtCUUTN2bCSPKHvIMCryi8YkM2kaZfO_ZMyU", forHTTPHeaderField: "Authorization")
+        request.addValue(token, forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         httpManager.sendRequest(request) { _, response, error in
@@ -156,10 +164,11 @@ class NetworkManager {
             completion(false, nil)
             return
         }
+        guard let token = token else { return }
         
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.patch.rawValue
-        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MiIsImlhdCI6MTcxNjM0MTY3NSwiZXhwIjoxNzE2Mzc3Njc1fQ.7U8ifNvhtCUUTN2bCSPKHvIMCryi8YkM2kaZfO_ZMyU", forHTTPHeaderField: "Authorization")
+        request.addValue(token, forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         do {
@@ -195,10 +204,11 @@ class NetworkManager {
             completion(false, nil)
             return
         }
+        guard let token = token else { return }
         
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.post.rawValue
-        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MiIsImlhdCI6MTcxNjM0MTY3NSwiZXhwIjoxNzE2Mzc3Njc1fQ.7U8ifNvhtCUUTN2bCSPKHvIMCryi8YkM2kaZfO_ZMyU", forHTTPHeaderField: "Authorization")
+        request.addValue(token, forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         do {

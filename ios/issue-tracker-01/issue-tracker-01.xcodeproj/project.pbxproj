@@ -101,6 +101,7 @@
 		D61AAC8E2BFC3AB400D35399 /* LabelEditorPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelEditorPaddingLabel.swift; sourceTree = "<group>"; };
 		D61AAC962BFDA93100D35399 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		D61AAC982BFDAA4F00D35399 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
+		D61AAC9C2BFDBA3900D35399 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		D6369F422BEA0F8F001BDAAB /* issue-tracker-01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "issue-tracker-01.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6369F452BEA0F8F001BDAAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6369F472BEA0F8F001BDAAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -245,6 +246,7 @@
 		D6369F392BEA0F8F001BDAAB = {
 			isa = PBXGroup;
 			children = (
+				D61AAC9C2BFDBA3900D35399 /* Secrets.xcconfig */,
 				D611794F2BEB792D00E7C267 /* .swiftlint.yml */,
 				D6369F442BEA0F8F001BDAAB /* issue-tracker-01 */,
 				D6369F5B2BEA0F90001BDAAB /* issue-tracker-01Tests */,
@@ -736,6 +738,7 @@
 		};
 		D6369F6D2BEA0F90001BDAAB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D61AAC9C2BFDBA3900D35399 /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -794,6 +797,7 @@
 		};
 		D6369F702BEA0F90001BDAAB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D61AAC9C2BFDBA3900D35399 /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

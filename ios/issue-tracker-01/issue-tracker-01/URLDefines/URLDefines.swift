@@ -9,7 +9,13 @@ import Foundation
 
 enum URLDefines {
     
-    private static let base = "http://13.125.246.130:8080"
+    private static let base: String = {
+        guard let urlBase = Bundle.main.object(forInfoDictionaryKey: "API_BASE_URL") as? String else {
+            return ""
+        }
+        return urlBase
+    }()
+
     static let issue = "\(base)/issue"
     static let issueList = "\(base)/issue/list"
     static let label = "\(base)/label"

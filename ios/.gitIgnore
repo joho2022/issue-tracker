@@ -53,6 +53,7 @@ iOSInjectionProject/
 
 ### Xcode ###
 *.xcodeproj/*
+*.xcconfig
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcodeproj/project.xcworkspace/
