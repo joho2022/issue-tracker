@@ -1,5 +1,5 @@
 //
-//  IssueViewModel.swift
+//  IssueModel.swift
 //  issue-tracker-01
 //
 //  Created by 조호근 on 5/20/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class IssueViewModel: BaseViewModel<Issue> {
+class IssueModel: BaseModel<Issue> {
     func fetchIssues(completion: @escaping () -> Void) {
         NetworkManager.shared.fetchIssues { [weak self] issues in
             DispatchQueue.main.async {

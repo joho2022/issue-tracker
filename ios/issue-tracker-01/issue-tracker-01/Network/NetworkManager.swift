@@ -75,7 +75,7 @@ class NetworkManager {
         }
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.delete.rawValue
-        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MyIsImlhdCI6MTcxNjI3MTEzMywiZXhwIjoxNzE2MzA3MTMzfQ.vMLs505L4wgEbY877ERnfD1T-HStzWG6yA-Mg5MEy78", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MiIsImlhdCI6MTcxNjM0MTY3NSwiZXhwIjoxNzE2Mzc3Njc1fQ.7U8ifNvhtCUUTN2bCSPKHvIMCryi8YkM2kaZfO_ZMyU", forHTTPHeaderField: "Authorization")
         
         httpManager.sendRequest(request) { _, response, error in
             guard let response = response, (200..<300).contains(response.statusCode) else {
@@ -94,7 +94,7 @@ class NetworkManager {
         }
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.post.rawValue
-        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MyIsImlhdCI6MTcxNjI3MTEzMywiZXhwIjoxNzE2MzA3MTMzfQ.vMLs505L4wgEbY877ERnfD1T-HStzWG6yA-Mg5MEy78", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MiIsImlhdCI6MTcxNjM0MTY3NSwiZXhwIjoxNzE2Mzc3Njc1fQ.7U8ifNvhtCUUTN2bCSPKHvIMCryi8YkM2kaZfO_ZMyU", forHTTPHeaderField: "Authorization")
         
         httpManager.sendRequest(request) { _, response, error in
             guard let response = response, (200..<300).contains(response.statusCode) else {
@@ -138,7 +138,7 @@ class NetworkManager {
         }
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.delete.rawValue
-        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MyIsImlhdCI6MTcxNjI3MTEzMywiZXhwIjoxNzE2MzA3MTMzfQ.vMLs505L4wgEbY877ERnfD1T-HStzWG6yA-Mg5MEy78", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MiIsImlhdCI6MTcxNjM0MTY3NSwiZXhwIjoxNzE2Mzc3Njc1fQ.7U8ifNvhtCUUTN2bCSPKHvIMCryi8YkM2kaZfO_ZMyU", forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         httpManager.sendRequest(request) { _, response, error in
@@ -159,7 +159,7 @@ class NetworkManager {
         
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.patch.rawValue
-        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MyIsImlhdCI6MTcxNjI3MTEzMywiZXhwIjoxNzE2MzA3MTMzfQ.vMLs505L4wgEbY877ERnfD1T-HStzWG6yA-Mg5MEy78", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MiIsImlhdCI6MTcxNjM0MTY3NSwiZXhwIjoxNzE2Mzc3Njc1fQ.7U8ifNvhtCUUTN2bCSPKHvIMCryi8YkM2kaZfO_ZMyU", forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         do {
@@ -198,7 +198,7 @@ class NetworkManager {
         
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.post.rawValue
-        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MyIsImlhdCI6MTcxNjI3MTEzMywiZXhwIjoxNzE2MzA3MTMzfQ.vMLs505L4wgEbY877ERnfD1T-HStzWG6yA-Mg5MEy78", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MiIsImlhdCI6MTcxNjM0MTY3NSwiZXhwIjoxNzE2Mzc3Njc1fQ.7U8ifNvhtCUUTN2bCSPKHvIMCryi8YkM2kaZfO_ZMyU", forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         do {

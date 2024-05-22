@@ -1,5 +1,5 @@
 //
-//  LabelViewModel.swift
+//  LabelModel.swift
 //  issue-tracker-01
 //
 //  Created by 조호근 on 5/20/24.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-class LabelViewModel: BaseViewModel<Label> {
-    static let shared = LabelViewModel()
+class LabelModel: BaseModel<Label> {
+    static let shared = LabelModel()
     
     enum Notifications {
         static let labelUpdated = Notification.Name("labelUpdated")

@@ -1,5 +1,5 @@
 //
-//  BaseViewModel.swift
+//  BaseModel.swift
 //  issue-tracker-01
 //
 //  Created by 조호근 on 5/15/24.
@@ -17,7 +17,7 @@ protocol ItemManaging: AnyObject {
     func updateItem(at index: Int, _ item: T)
 }
 
-class BaseViewModel<T>: ItemManaging {
+class BaseModel<T>: ItemManaging {
     private(set) var items: [T] = []
     
     var count: Int {

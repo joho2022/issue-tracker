@@ -15,7 +15,7 @@ class LabelEditorViewController: UIViewController {
     var labelIndex: Int?
     var isEditingMode = false
     
-    var labelViewModel: LabelViewModel!
+    var labelModel: LabelModel!
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleField: UITextField!
@@ -28,7 +28,7 @@ class LabelEditorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        labelViewModel = LabelViewModel.shared
+        labelModel = LabelModel.shared
         
         self.containerView.layer.cornerRadius = 12
         configureFont()
@@ -96,7 +96,7 @@ class LabelEditorViewController: UIViewController {
         let labelRequest = LabelRequest(name: name, description: description, color: color)
         
         if isEditingMode, let index = labelIndex {
-            labelViewModel.updateLabel(at: index, labelRequest: labelRequest) { success in
+            labelModel.updateLabel(at: index, labelRequest: labelRequest) { success in
                 if success {
                     print("[\(labelRequest.name)]: 레이블 편집!")
                     self.navigationController?.dismiss(animated: true)
@@ -105,7 +105,7 @@ class LabelEditorViewController: UIViewController {
                 }
             }
         } else {
-            labelViewModel.createLabel(labelRequest: labelRequest) { success in
+            labelModel.createLabel(labelRequest: labelRequest) { success in
                 if success {
                     print("[\(labelRequest.name)]: 레이블 생성!")
                     self.navigationController?.dismiss(animated: true)

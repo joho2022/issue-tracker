@@ -15,7 +15,7 @@ class IssueDetailViewController: UIViewController {
     
     var issueId: Int?
     var issueDetail: IssueDetail?
-    let commentViewModel = BaseViewModel<Comment>()
+    let commentViewModel = BaseModel<Comment>()
     
     override func viewDidLoad() {
         super.viewDidLoad()

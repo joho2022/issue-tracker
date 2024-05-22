@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -271,21 +271,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="마일스톤" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhS-qr-Z9H">
-                                <rect key="frame" x="92.666666666666686" y="402.66666666666669" width="208" height="72"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WrW-Bq-i8a">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8sP-5d-oI2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="bhS-qr-Z9H" firstAttribute="centerX" secondItem="8sP-5d-oI2" secondAttribute="centerX" id="Fr8-0S-gqw"/>
-                            <constraint firstItem="bhS-qr-Z9H" firstAttribute="centerY" secondItem="8sP-5d-oI2" secondAttribute="centerY" id="YVg-nq-EYG"/>
+                            <constraint firstItem="WrW-Bq-i8a" firstAttribute="top" secondItem="8sP-5d-oI2" secondAttribute="top" id="1RK-Id-Nb4"/>
+                            <constraint firstItem="8sP-5d-oI2" firstAttribute="trailing" secondItem="WrW-Bq-i8a" secondAttribute="trailing" id="32E-Zv-wE0"/>
+                            <constraint firstItem="WrW-Bq-i8a" firstAttribute="leading" secondItem="8sP-5d-oI2" secondAttribute="leading" id="AhF-0E-v6b"/>
+                            <constraint firstItem="8sP-5d-oI2" firstAttribute="bottom" secondItem="WrW-Bq-i8a" secondAttribute="bottom" id="TPB-8W-TbJ"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="마일스톤" image="property=milestone" id="lTb-PU-OCc"/>
+                    <connections>
+                        <outlet property="tableView" destination="WrW-Bq-i8a" id="7Uf-8d-Qce"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LRY-oA-M7Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

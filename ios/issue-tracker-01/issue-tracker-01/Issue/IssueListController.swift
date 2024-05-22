@@ -10,7 +10,7 @@ import UIKit
 class IssueListController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    let issueViewModel = IssueViewModel()
+    let issueModel = IssueModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class IssueListController: UIViewController {
     }
     
     private func fetchIssues() {
-        self.issueViewModel.fetchIssues {
+        self.issueModel.fetchIssues {
             self.tableView.reloadData()
         }
     }
@@ -63,7 +63,7 @@ class IssueListController: UIViewController {
 
 extension IssueListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return issueViewModel.count
+        return issueModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,7 +71,7 @@ extension IssueListController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
-        if let issue = issueViewModel.item(at: indexPath.row) {
+        if let issue = issueModel.item(at: indexPath.row) {
             cell.setIssue(issue)
         }
         
@@ -83,12 +83,12 @@ extension IssueListController: UITableViewDataSource, UITableViewDelegate {
                                              color: .myRed,
                                              image: UIImage(systemName: "trash.fill"),
                                              style: .destructive) { _, _, completionHandler in
-            guard let issue = self.issueViewModel.item(at: indexPath.row) else {
+            guard let issue = self.issueModel.item(at: indexPath.row) else {
                 completionHandler(false)
                 return
             }
             
-            self.issueViewModel.deleteIssue(at: indexPath.row) { success in
+            self.issueModel.deleteIssue(at: indexPath.row) { success in
                 if success {
                     tableView.deleteRows(at: [indexPath], with: .automatic)
                     print("\(issue.id) 삭제")
@@ -101,12 +101,12 @@ extension IssueListController: UITableViewDataSource, UITableViewDelegate {
                                             color: .myPurple,
                                             image: UIImage(systemName: "archivebox.fill"),
                                             style: .destructive) { _, _, completionHandler in
-            guard let issue = self.issueViewModel.item(at: indexPath.row) else {
+            guard let issue = self.issueModel.item(at: indexPath.row) else {
                 completionHandler(false)
                 return
             }
             
-            self.issueViewModel.closeIssue(at: indexPath.row) { success in
+            self.issueModel.closeIssue(at: indexPath.row) { success in
                 if success {
                     tableView.deleteRows(at: [indexPath], with: .automatic)
                     print("\(issue.id) 닫기")
@@ -122,7 +122,7 @@ extension IssueListController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let issue = issueViewModel.item(at: indexPath.row) {
+        if let issue = issueModel.item(at: indexPath.row) {
             showIssueDetail(issueId: issue.id)
         }
     }

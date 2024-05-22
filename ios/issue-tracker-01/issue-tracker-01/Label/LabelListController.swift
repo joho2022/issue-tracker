@@ -11,11 +11,11 @@ class LabelListController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var labelViewModel: LabelViewModel!
+    var labelModel: LabelModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        labelViewModel = LabelViewModel.shared
+        labelModel = LabelModel.shared
         
         self.title = "레이블"
         
@@ -28,7 +28,7 @@ class LabelListController: UIViewController {
     private func registerForNotifications() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(handleLabelUpdated),
-                                               name: LabelViewModel.Notifications.labelUpdated,
+                                               name: LabelModel.Notifications.labelUpdated,
                                                object: nil
         )
     }
@@ -45,7 +45,7 @@ class LabelListController: UIViewController {
     }
     
     private func fetchLabels() {
-        self.labelViewModel.fetchLabels {
+        self.labelModel.fetchLabels {
             self.tableView.reloadData()
         }
     }
@@ -69,7 +69,7 @@ class LabelListController: UIViewController {
 
 extension LabelListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return labelViewModel.count
+        return labelModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,7 +77,7 @@ extension LabelListController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         
-        if let label = labelViewModel.item(at: indexPath.row) {
+        if let label = labelModel.item(at: indexPath.row) {
             cell.setLabel(label)
         }
         
@@ -89,12 +89,12 @@ extension LabelListController: UITableViewDataSource, UITableViewDelegate {
                                              color: .myRed,
                                              image: UIImage(systemName: "trash.fill"),
                                              style: .destructive) { _, _, completionHandler in
-            guard let label = self.labelViewModel.item(at: indexPath.row) else {
+            guard let label = self.labelModel.item(at: indexPath.row) else {
                 completionHandler(false)
                 return
             }
             
-            self.labelViewModel.deleteLabel(at: indexPath.row) { success in
+            self.labelModel.deleteLabel(at: indexPath.row) { success in
                 if success {
                     tableView.deleteRows(at: [indexPath], with: .automatic)
                     print("\(label.id) 삭제")
@@ -107,7 +107,7 @@ extension LabelListController: UITableViewDataSource, UITableViewDelegate {
                                            color: .myPurple,
                                            image: UIImage(systemName: "pencil"),
                                            style: .destructive) { _, _, completionHandler in
-            guard let label = self.labelViewModel.item(at: indexPath.row) else {
+            guard let label = self.labelModel.item(at: indexPath.row) else {
                 completionHandler(false)
                 return
             }
