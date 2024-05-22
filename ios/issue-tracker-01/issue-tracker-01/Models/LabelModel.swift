@@ -7,7 +7,14 @@
 
 import Foundation
 
-class LabelModel: BaseModel<LabelResponse> {
+protocol LabelManaging: ItemManaging where T == LabelResponse {
+    func fetchLabels(completion: @escaping () -> Void)
+    func deleteLabel(at index: Int, completion: @escaping (Bool) -> Void)
+    func updateLabel(at index: Int, labelRequest: LabelRequest, completion: @escaping (Bool) -> Void)
+    func createLabel(labelRequest: LabelRequest, completion: @escaping (Bool) -> Void)
+}
+
+class LabelModel: BaseModel<LabelResponse>, LabelManaging {
     static let shared = LabelModel()
     
     enum Notifications {

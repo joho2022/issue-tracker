@@ -11,11 +11,10 @@ class LabelListController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var labelModel: LabelModel!
+    var labelModel: any LabelManaging = LabelModel.shared
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        labelModel = LabelModel.shared
         
         self.title = "레이블"
         

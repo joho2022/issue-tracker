@@ -10,6 +10,7 @@ import Foundation
 protocol ItemManaging: AnyObject {
     associatedtype T
     
+    var count: Int { get }
     func updateItems(with newItems: [T])
     func item(at index: Int) -> T?
     func removeItem(at index: Int)
