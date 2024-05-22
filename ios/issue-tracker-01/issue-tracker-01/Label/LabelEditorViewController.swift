@@ -11,7 +11,7 @@ class LabelEditorViewController: UIViewController {
     
     static let identifier: String = "LabelEditorViewController"
     
-    var labelToEdit: Label?
+    var labelToEdit: LabelResponse?
     var labelIndex: Int?
     var isEditingMode = false
     

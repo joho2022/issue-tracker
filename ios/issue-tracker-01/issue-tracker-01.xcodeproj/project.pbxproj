@@ -26,6 +26,8 @@
 		D61AAC8C2BFB884500D35399 /* LabelEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D61AAC8B2BFB884500D35399 /* LabelEditorViewController.xib */; };
 		D61AAC8D2BFB884500D35399 /* LabelEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AAC8A2BFB884500D35399 /* LabelEditorViewController.swift */; };
 		D61AAC8F2BFC3AB400D35399 /* LabelEditorPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AAC8E2BFC3AB400D35399 /* LabelEditorPaddingLabel.swift */; };
+		D61AAC972BFDA93100D35399 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AAC962BFDA93100D35399 /* Label.swift */; };
+		D61AAC992BFDAA4F00D35399 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61AAC982BFDAA4F00D35399 /* Milestone.swift */; };
 		D6369F462BEA0F8F001BDAAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6369F452BEA0F8F001BDAAB /* AppDelegate.swift */; };
 		D6369F482BEA0F8F001BDAAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6369F472BEA0F8F001BDAAB /* SceneDelegate.swift */; };
 		D6369F4A2BEA0F8F001BDAAB /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6369F492BEA0F8F001BDAAB /* LoginController.swift */; };
@@ -97,6 +99,8 @@
 		D61AAC8A2BFB884500D35399 /* LabelEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelEditorViewController.swift; sourceTree = "<group>"; };
 		D61AAC8B2BFB884500D35399 /* LabelEditorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelEditorViewController.xib; sourceTree = "<group>"; };
 		D61AAC8E2BFC3AB400D35399 /* LabelEditorPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelEditorPaddingLabel.swift; sourceTree = "<group>"; };
+		D61AAC962BFDA93100D35399 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		D61AAC982BFDAA4F00D35399 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
 		D6369F422BEA0F8F001BDAAB /* issue-tracker-01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "issue-tracker-01.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6369F452BEA0F8F001BDAAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6369F472BEA0F8F001BDAAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -229,6 +233,8 @@
 			isa = PBXGroup;
 			children = (
 				D61179732BEC8FA900E7C267 /* Issue.swift */,
+				D61AAC962BFDA93100D35399 /* Label.swift */,
+				D61AAC982BFDAA4F00D35399 /* Milestone.swift */,
 				D6A632162BF46ACC000E9C30 /* BaseModel.swift */,
 				D61AAC862BFAD62700D35399 /* IssueModel.swift */,
 				D61AAC882BFAF1A600D35399 /* LabelModel.swift */,
@@ -532,7 +538,9 @@
 				D61179742BEC8FA900E7C267 /* Issue.swift in Sources */,
 				D6A631F72BF1DF8A000E9C30 /* UIViewController+Extensions.swift in Sources */,
 				D6A632002BF2200A000E9C30 /* HTTPManager.swift in Sources */,
+				D61AAC992BFDAA4F00D35399 /* Milestone.swift in Sources */,
 				D642E2722BF740A400ACAE45 /* LabelTableCell.swift in Sources */,
+				D61AAC972BFDA93100D35399 /* Label.swift in Sources */,
 				D6369F462BEA0F8F001BDAAB /* AppDelegate.swift in Sources */,
 				D61179662BEC6D6800E7C267 /* Color.swift in Sources */,
 				D642E26E2BF717BB00ACAE45 /* EditorOptionViewController.swift in Sources */,

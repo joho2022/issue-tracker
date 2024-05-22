@@ -11,7 +11,7 @@ class IssueTableCell: UITableViewCell {
 
     static let identifier: String = "IssueTableCell"
     
-    private var lables: [Label]?
+    private var lables: [LabelResponse]?
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -68,7 +68,7 @@ class IssueTableCell: UITableViewCell {
         }
     }
     
-    private func setData(_ data: [Label]?) {
+    private func setData(_ data: [LabelResponse]?) {
         self.lables = data
         self.collectionView.reloadData()
     }

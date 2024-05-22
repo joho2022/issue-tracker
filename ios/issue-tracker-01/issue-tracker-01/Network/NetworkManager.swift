@@ -106,7 +106,7 @@ class NetworkManager {
         }
     }
     
-    func fetchLabels(completion: @escaping ([Label]?) -> Void) {
+    func fetchLabels(completion: @escaping ([LabelResponse]?) -> Void) {
         guard let url = URL(string: URLDefines.labelList) else {
             completion(nil)
             return
@@ -121,7 +121,7 @@ class NetworkManager {
             }
             
             do {
-                let labels = try JSONDecoder().decode([Label].self, from: data)
+                let labels = try JSONDecoder().decode([LabelResponse].self, from: data)
                 self.prettyPrintJSON(labels)
                 completion(labels)
             } catch {
@@ -151,7 +151,7 @@ class NetworkManager {
         }
     }
     
-    func updateLabel(labelId: Int, labelRequest: LabelRequest, completion: @escaping (Bool, Label?) -> Void) {
+    func updateLabel(labelId: Int, labelRequest: LabelRequest, completion: @escaping (Bool, LabelResponse?) -> Void) {
         guard let url = URL(string: URLDefines.label + "/\(labelId)") else {
             completion(false, nil)
             return
@@ -181,7 +181,7 @@ class NetworkManager {
             }
             
             do {
-                let decodedLabel = try JSONDecoder().decode(Label.self, from: data)
+                let decodedLabel = try JSONDecoder().decode(LabelResponse.self, from: data)
                 completion(true, decodedLabel)
             } catch {
                 os_log("[ updateLabel ] : \(error)")
@@ -190,7 +190,7 @@ class NetworkManager {
         }
     }
     
-    func createLabel(label: LabelRequest, completion: @escaping (Bool, Label?) -> Void) {
+    func createLabel(label: LabelRequest, completion: @escaping (Bool, LabelResponse?) -> Void) {
         guard let url = URL(string: URLDefines.label) else {
             completion(false, nil)
             return
@@ -219,7 +219,7 @@ class NetworkManager {
                 return
             }
             do {
-                let decodedLabel = try JSONDecoder().decode(Label.self, from: data)
+                let decodedLabel = try JSONDecoder().decode(LabelResponse.self, from: data)
                 completion(true, decodedLabel)
             } catch {
                 os_log("[ createLabel ] : \(String(describing: error))")

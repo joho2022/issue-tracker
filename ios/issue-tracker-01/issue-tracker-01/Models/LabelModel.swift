@@ -7,7 +7,7 @@
 
 import Foundation
 
-class LabelModel: BaseModel<Label> {
+class LabelModel: BaseModel<LabelResponse> {
     static let shared = LabelModel()
     
     enum Notifications {

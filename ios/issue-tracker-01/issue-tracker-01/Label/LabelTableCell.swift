@@ -28,7 +28,7 @@ class LabelTableCell: UITableViewCell {
         self.descriptionLabel.applyStyle(fontManager: FontManager(weight: .medium, size: .medium), textColor: .gray800)
     }
     
-    func setLabel(_ data: Label) {
+    func setLabel(_ data: LabelResponse) {
         let color = UIColor(hex: data.color)
         
         self.nameLabel.text = data.name

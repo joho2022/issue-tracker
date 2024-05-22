@@ -34,7 +34,7 @@ class LabelCell: UICollectionViewCell {
         self.titleLabel.backgroundColor = .clear
     }
     
-    func setLabel(_ data: Label) {
+    func setLabel(_ data: LabelResponse) {
         self.titleLabel.text = data.name
         self.titleLabel.backgroundColor = UIColor(hex: data.color)
     }

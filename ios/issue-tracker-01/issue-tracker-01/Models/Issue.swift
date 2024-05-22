@@ -11,7 +11,7 @@ struct Issue: Codable {
     let id: Int
     let title: String
     let comment: String?
-    let labels: [Label]?
+    let labels: [LabelResponse]?
     let milestone: Milestone?
 }
 
@@ -22,7 +22,7 @@ struct IssueDetail: Codable {
     let lastModifiedAt: String
     let status: String
     let assignees: [String]
-    let labels: [Label]?
+    let labels: [LabelResponse]?
     let milestone: Milestone?
     let comments: [Comment]
 }
@@ -35,22 +35,4 @@ struct Comment: Codable {
     let fileUrls: [String]
     let likedCount: Int
     let lastModifiedAt: String
-}
-
-struct Label: Codable {
-    let id: Int
-    let name: String
-    let description: String
-    let color: String
-}
-
-struct LabelRequest: Codable {
-    let name: String
-    let description: String
-    let color: String
-}
-
-struct Milestone: Codable {
-    let id: Int
-    let title: String
 }
