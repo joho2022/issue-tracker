@@ -39,17 +39,23 @@ class LabelEditorViewController: UIViewController {
     }
     
     private func configureForEditing() {
-        guard let label = labelToEdit else { return }
+        if let label = labelToEdit {
+            
+            let color = UIColor(hex: label.color)
+            
+            isEditingMode = true
+            titleField.text = label.name
+            descriptionField.text = label.description
+            backgroundValueLabel.text = label.color
+            labelLabel.text = label.name
+            labelLabel.backgroundColor = color
+            labelLabel.textColor = color.isDarkColor ? .gray50 : .gray900
+            
+            self.title = "레이블 편집"
+        } else {
+            self.title = "레이블 추가"
+        }
         
-        let color = UIColor(hex: label.color)
-        
-        isEditingMode = true
-        titleField.text = label.name
-        descriptionField.text = label.description
-        backgroundValueLabel.text = label.color
-        labelLabel.text = label.name
-        labelLabel.backgroundColor = color
-        labelLabel.textColor = color.isDarkColor ? .gray50 : .gray900
     }
     
     private func setupLayout() {

@@ -20,4 +20,6 @@ enum URLDefines {
     static let issueList = "\(base)/issue/list"
     static let label = "\(base)/label"
     static let labelList = "\(base)/label/list"
+    static let milestone = "\(base)/milestone"
+    static let milestoneList = "\(base)/milestone/list"
 }

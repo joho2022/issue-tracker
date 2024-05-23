@@ -77,7 +77,6 @@ class IssueTableCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
-    
 }
 
 extension IssueTableCell: UICollectionViewDataSource, UICollectionViewDelegate {

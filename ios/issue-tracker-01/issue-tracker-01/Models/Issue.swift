@@ -12,7 +12,7 @@ struct Issue: Codable {
     let title: String
     let comment: String?
     let labels: [LabelResponse]?
-    let milestone: Milestone?
+    let milestone: CurrentMilestone?
 }
 
 struct IssueDetail: Codable {
@@ -23,7 +23,7 @@ struct IssueDetail: Codable {
     let status: String
     let assignees: [String]
     let labels: [LabelResponse]?
-    let milestone: Milestone?
+    let milestone: CurrentMilestone?
     let comments: [Comment]
 }
 

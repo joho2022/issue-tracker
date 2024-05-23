@@ -7,7 +7,23 @@
 
 import Foundation
 
-struct Milestone: Codable {
+struct CurrentMilestone: Codable {
     let id: Int
     let title: String
+}
+
+struct MilestoneResponse: Codable {
+    let id: Int
+    let name: String
+    let description: String?
+    let deadline: String?
+    let openCounts: Int
+    let closedCounts: Int
+    let completion: Int
+}
+
+struct MilestoneRequest: Codable {
+    let name: String
+    let description: String?
+    let deadline: String?
 }

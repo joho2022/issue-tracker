@@ -238,6 +238,133 @@ class NetworkManager {
         }
     }
     
+    func fetchMilestones(completion: @escaping ([MilestoneResponse]?) -> Void) {
+        guard let url = URL(string: URLDefines.milestoneList) else {
+            completion(nil)
+            return
+        }
+        let request = URLRequest(url: url)
+        
+        httpManager.sendRequest(request) { data, _, error in
+            guard let data = data, error == nil else {
+                os_log("[ fetchMilestones ] : \(String(describing: error))")
+                completion(nil)
+                return
+            }
+            
+            do {
+                let milestones = try JSONDecoder().decode([MilestoneResponse].self, from: data)
+                self.prettyPrintJSON(milestones)
+                completion(milestones)
+            } catch {
+                os_log("[ fetchMilestones ]: \(error)")
+                completion(nil)
+            }
+        }
+    }
+    
+    func deleteMilestone(milestoneId: Int, completion: @escaping (Bool) -> Void) {
+        guard let url = URL(string: URLDefines.milestone + "/\(milestoneId)") else {
+            completion(false)
+            return
+        }
+        guard let token = token else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.delete.rawValue
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        httpManager.sendRequest(request) { _, response, error in
+            guard let response = response, (200..<300).contains(response.statusCode) else {
+                os_log("[ deleteMilestone ] : \(String(describing: error))\n\(String(describing: response?.statusCode))")
+                completion(false)
+                return
+            }
+            completion(true)
+        }
+    }
+    
+    func updateMilestone(milestoneId: Int, milestoneRequest: MilestoneRequest, completion: @escaping (Bool, MilestoneResponse?) -> Void) {
+        guard let url = URL(string: URLDefines.milestone + "/\(milestoneId)") else {
+            completion(false, nil)
+            return
+        }
+        guard let token = token else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.patch.rawValue
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let jsonData = try JSONEncoder().encode(milestoneRequest)
+            request.httpBody = jsonData
+        } catch {
+            os_log("[ updateMilestone ]: \(error)")
+            completion(false, nil)
+            return
+        }
+        
+        httpManager.sendRequest(request) { data, response, error in
+            guard let data = data, error == nil,
+                  let response = response, (200..<300).contains(response.statusCode) else {
+                os_log("[ updateMilestone ] : \(String(describing: error?.localizedDescription))\n[ statusCode ]: \(String(describing: response?.statusCode))")
+                
+                completion(false, nil)
+                return
+            }
+            
+            do {
+                let decodedMilestone = try JSONDecoder().decode(MilestoneResponse.self, from: data)
+                completion(true, decodedMilestone)
+            } catch {
+                os_log("[ updateMilestone ] : \(error)")
+                completion(false, nil)
+            }
+        }
+    }
+    
+    func createMilestone(milestone: MilestoneRequest, completion: @escaping (Bool, MilestoneResponse?) -> Void) {
+        guard let url = URL(string: URLDefines.milestone) else {
+            completion(false, nil)
+            return
+        }
+        guard let token = token else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.addValue(token, forHTTPHeaderField: "Authorization")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            let jsonData = try JSONEncoder().encode(milestone)
+            request.httpBody = jsonData
+        } catch {
+            os_log("[ createMilestone ]: \(error)")
+            completion(false, nil)
+            return
+        }
+        
+        httpManager.sendRequest(request) { data, response, error in
+            guard let data = data, error == nil,
+                  let response = response, (200..<300).contains(response.statusCode) else {
+                os_log("[ createMilestone ] : \(String(describing: error?.localizedDescription))\n[ statusCode ]: \(String(describing: response?.statusCode))")
+                
+                completion(false, nil)
+                return
+            }
+            
+            do {
+                let decodedMilestone = try JSONDecoder().decode(MilestoneResponse.self, from: data)
+                completion(true, decodedMilestone)
+            } catch {
+                os_log("[ createMilestone ] : \(String(describing: error))")
+                completion(false, nil)
+            }
+        }
+    }
+    
     private func prettyPrintJSON<T: Encodable>(_ item: T) {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
